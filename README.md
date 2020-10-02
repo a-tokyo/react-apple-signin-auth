@@ -73,7 +73,7 @@ export default MyAppleSigninButton;
 ```
 
 ### Raw JS functionality
-a module called `appleAuthHelpers` is also exported to allow you to use the functionality without using the UI.
+a module called `appleAuthHelpers` is also exported to allow you to use the functionality without using the UI or relying on React. This works with any kind of frontend JS, eg: react, vue, etc...
 ```js
 import { appleAuthHelpers } from 'react-apple-signin';
 

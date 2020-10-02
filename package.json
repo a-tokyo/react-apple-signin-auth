@@ -104,6 +104,8 @@
     "no-redirect",
     "jwt",
     "es6",
+    "vue",
+    "vue-apple",
     "flow",
     "types"
   ],
