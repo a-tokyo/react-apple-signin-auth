@@ -7,7 +7,7 @@ on:
 
 jobs:
   test_release_publish:
-    name: Running tests and releasing to NPM
+    name: Running tests and releasing to NPM and deploying demo
     runs-on: ubuntu-latest
 
     steps:
@@ -50,3 +50,5 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Deploy Demo
+        run: NODE_ENV=production yarn deploy
