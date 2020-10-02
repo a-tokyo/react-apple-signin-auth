@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "plural/base",
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/flowtype"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "plugins": [
+    "flowtype",
+    "prettier"
+  ],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "import/no-named-as-default-member": "off"
+  }
+}

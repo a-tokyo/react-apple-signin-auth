@@ -1,0 +1,29 @@
+{
+  "presets": [
+    "@babel/flow",
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "browsers": [
+            "last 3 versions"
+          ],
+        }
+      }
+    ],
+    "@babel/react"
+  ],
+  "plugins": [],
+  "env": {
+    "production": {
+      "comments": false,
+      "compact": "auto",
+      "minified": true,
+      "ignore": [
+        "**/__tests__/",
+        "**/__mocks__/",
+        "**/*.test.js"
+      ]
+    }
+  }
+}
