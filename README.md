@@ -140,7 +140,7 @@ Pull requests are highly appreciated! For major changes, please open an issue fi
 ### Getting Started
 - Clone the repo: `git clone https://github.com/a-tokyo/react-apple-signin`
 - Install deps: `yarn`
-- Start webpack development server: `yarn start`
+- Start webpack development server on [localhost:3001](http://localhost:3001): `yarn start`
 - To run/update the tests locally, run: `yarn test -u`
 
 ## Roadmap / Todos
