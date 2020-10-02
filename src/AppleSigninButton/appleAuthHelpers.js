@@ -1,5 +1,5 @@
 /** @flow */
-import { waitForVar } from './utils';
+import waitForVar from '../utils/waitForVar';
 
 import type { AppleAuthOptions, AppleAuthResponse } from './types';
 

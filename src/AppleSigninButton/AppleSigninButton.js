@@ -1,8 +1,9 @@
 /** @flow */
 import React, { Fragment } from 'react';
 
+import useScript from '../hooks/useScript';
+
 import appleAuthHelpers from './appleAuthHelpers';
-import useScript from './useScript';
 
 import './AppleSigninButton.css';
 

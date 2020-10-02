@@ -39,4 +39,4 @@ const waitForVar = async (
   return waitForVar(name, { pollFrequency, parent, retries });
 };
 
-export { waitForVar };
+export default waitForVar;

@@ -26,12 +26,12 @@
     "transpile": "babel src -d dist --copy-files",
     "prepublishOnly": "npm run transpile",
     "build": "webpack --mode production",
-    "deploy": "gh-pages -d examples/dist",
+    "deploy": "gh-pages -d demo/dist",
     "publish-demo": "npm run build && npm run deploy"
   },
   "peerDependencies": {
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react": ">= 16.0.0",
+    "react-dom": ">= 16.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
