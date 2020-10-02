@@ -83,7 +83,7 @@
       "git add"
     ]
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "keywords": [
     "apple",
     "signin",
