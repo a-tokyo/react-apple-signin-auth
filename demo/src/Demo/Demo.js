@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import './Demo.css';
-
+import pkgJson from '../../../package.json';
 import AppleSigninButton from '../../../src';
+
+import './Demo.css';
 
 function Demo() {
   const [authOptions, setAuthOptions] = useState({
@@ -49,11 +50,13 @@ export default MyAppleSigninButton;
   }, [authOptions, extraProps]);
 
   return (
-    <div className="App">
-      <h1>React-apple-signin</h1>
-      <p>Apple signin for React using Apple's official JS SDK.</p>
+    <article>
+      <header>
+        <h1>{pkgJson.name}</h1>
+        <p>{pkgJson.description}</p>
+      </header>
       <div className="container">
-        <div>
+        <section>
           <h3>UI:</h3>
           <AppleSigninButton authOptions={authOptions} {...extraProps} />
           <h3>Code:</h3>
@@ -62,8 +65,8 @@ export default MyAppleSigninButton;
               {codeString}
             </SyntaxHighlighter>
           </div>
-        </div>
-        <div>
+        </section>
+        <section>
           <h2>Props</h2>
           <div className="options-container">
             <h3>Auth options</h3>
@@ -166,9 +169,13 @@ export default MyAppleSigninButton;
               <div>render</div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+      <footer>
+        Built with ❤️ by Ahmed Tokyo
+        <div>version: {pkgJson.version}</div>
+      </footer>
+    </article>
   );
 }
 

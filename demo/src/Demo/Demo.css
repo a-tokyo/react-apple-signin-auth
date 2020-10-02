@@ -2,7 +2,7 @@
   display: flex;
   padding: 10px 40px;
 }
-.container>div {
+.container>* {
   flex: 1;
 }
 
