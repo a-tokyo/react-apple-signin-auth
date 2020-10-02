@@ -107,3 +107,8 @@ if (response) {
 
 ## Contributing
 Pull requests are highly appreciated! For major changes, please open an issue first to discuss what you would like to change.
+
+### Getting Started
+- Clone the repo: `git clone https://github.com/a-tokyo/react-apple-signin`
+- Install deps: `yarn`
+- Start webpack development server: `yarn start`
