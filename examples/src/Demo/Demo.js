@@ -34,6 +34,7 @@ const MyAppleSigninButton = () => {
         scope: '${authOptions.scope}',
         redirectURI: '${authOptions.redirectURI}',
         state: '${authOptions.state}',
+        nonce: '${authOptions.nonce}',
         usePopup: ${authOptions.usePopup},
       }}
       /** General props */
