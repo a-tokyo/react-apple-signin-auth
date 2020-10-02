@@ -114,3 +114,7 @@ Pull requests are highly appreciated! For major changes, please open an issue fi
 - Install deps: `yarn`
 - Start webpack development server: `yarn start`
 - To run/update the tests locally, run: `yarn test -u`
+
+## Roadmap / Todos
+- Better UI for the demo. eg: tailwind
+- Typescript support

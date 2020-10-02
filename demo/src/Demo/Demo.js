@@ -26,24 +26,24 @@ function Demo() {
     setCodeString(`import AppleSignin from 'react-apple-signin';
 
 /** Apple Signin button */
-const MyAppleSigninButton = () => {
-  return (
-    <AppleSignin
-      /** Auth options passed to AppleID.auth.init() */
-      authOptions={{
-        clientId: '${authOptions.clientId}',
-        scope: '${authOptions.scope}',
-        redirectURI: '${authOptions.redirectURI}',
-        state: '${authOptions.state}',
-        nonce: '${authOptions.nonce}',
-        usePopup: ${authOptions.usePopup},
-      }}
-      /** General props */
-      uiType="${extraProps.uiType}"
-      /** Checkout README.md for further customization props. */
-    />
-  );
-};
+const MyAppleSigninButton = ({ ...rest }) => (
+  <AppleSignin
+    /** Auth options passed to AppleID.auth.init() */
+    authOptions={{
+      clientId: '${authOptions.clientId}',
+      scope: '${authOptions.scope}',
+      redirectURI: '${authOptions.redirectURI}',
+      state: '${authOptions.state}',
+      nonce: '${authOptions.nonce}',
+      usePopup: ${authOptions.usePopup},
+    }}
+    /** General props */
+    uiType="${extraProps.uiType}"
+    /** Checkout README.md for further customization props. */
+    /** Spread rest props if needed */
+    {...rest}
+  />
+);
 
 export default MyAppleSigninButton;
 `);
