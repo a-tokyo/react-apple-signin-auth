@@ -106,6 +106,34 @@ if (response) {
 
 ```
 
+## Server-side authentication (nodeJS backend)
+Another library exists for server/backend support for Apple signin [apple-signin-auth](https://github.com/A-Tokyo/apple-signin-auth)
+
+### Usage
+- Install the library `yarn add apple-signin-auth` OR `npm i apple-signin-auth`
+- Implement JWT verification logic
+  ```js
+  const appleSignin = require("apple-signin-auth");
+
+
+  const { authorization, user } = req.body;
+
+  try {
+    const { sub: userAppleId } = await appleSignin.verifyIdToken(
+      authorization.id_token, // We need to pass the token that we wish to decode.
+      {
+        audience: "com.example.web", // client id - The same one we used on the frontend, this is the secret key used for encoding and decoding the token.
+        nonce: 'nonce' // nonce - The same one we used on the frontend - OPTIONAL
+      }
+    );
+  } catch (err) {
+    // Token is not verified
+    console.error(err);
+  }
+  ```
+#### Further resources:
+- https://dev.to/onygami/how-to-add-signin-with-apple-on-your-website-43m9
+
 ## Contributing
 Pull requests are highly appreciated! For major changes, please open an issue first to discuss what you would like to change.
 
