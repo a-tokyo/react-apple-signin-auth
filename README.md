@@ -134,6 +134,10 @@ Another library exists for server/backend support for Apple signin [apple-signin
 #### Further resources:
 - https://dev.to/onygami/how-to-add-signin-with-apple-on-your-website-43m9
 
+### Related Projects
+- [Apple Signin for Node JS](https://github.com/A-Tokyo/apple-signin-auth)
+- [Apple Signin for React Native](https://github.com/invertase/react-native-apple-authentication)
+
 ## Contributing
 Pull requests are highly appreciated! For major changes, please open an issue first to discuss what you would like to change.
 

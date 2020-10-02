@@ -1,6 +1,5 @@
 {
   "name": "react-apple-signin",
-  "private": true,
   "version": "0.0.1",
   "description": " Apple signin for React using the official Apple JS SDK",
   "author": {
