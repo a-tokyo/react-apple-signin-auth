@@ -90,6 +90,7 @@ appleAuthHelpers.signIn({
 
 // OR
 
+/** promisified version - promise resolves with response on success or undefined on error -- note that this only work with usePopup: true */
 const response = await appleAuthHelpers.signIn({
   authOptions: {
     // same as above
