@@ -1,6 +1,6 @@
 {
   "extends": [
-    "plural/base",
+    "airbnb",
     "plugin:flowtype/recommended",
     "prettier",
     "prettier/flowtype"
