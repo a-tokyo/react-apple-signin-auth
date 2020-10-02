@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppleSigninButton /> gracefully handles falsy authOptions 1`] = `ShallowWrapper {}`;
+
+exports[`<AppleSigninButton /> pass icon props to svg 1`] = `ShallowWrapper {}`;
+
+exports[`<AppleSigninButton /> render UI type properly 1`] = `ShallowWrapper {}`;
+
+exports[`<AppleSigninButton /> render UI type properly 2`] = `ShallowWrapper {}`;
+
+exports[`<AppleSigninButton /> renders basic props correctly 1`] = `ShallowWrapper {}`;
+
+exports[`<AppleSigninButton /> should use render prop 1`] = `ShallowWrapper {}`;
+
+exports[`<AppleSigninButton /> skips script addition via prop 1`] = `ShallowWrapper {}`;

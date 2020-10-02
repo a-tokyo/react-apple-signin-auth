@@ -1,0 +1,22 @@
+.wrapper {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  padding: 10px 40px;
+}
+.container>* {
+  flex: 1;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.options-container>input {
+  display: block;
+}
