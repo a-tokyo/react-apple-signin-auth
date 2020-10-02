@@ -1,3 +1,4 @@
+/* @flow */
 import AppleSigninButton, { appleAuthHelpers } from './index';
 
 describe('index', () => {

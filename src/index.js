@@ -1,3 +1,4 @@
+/* @flow */
 import AppleSigninButton from './AppleSigninButton/AppleSigninButton';
 import appleAuthHelpers from './AppleSigninButton/appleAuthHelpers';
 
