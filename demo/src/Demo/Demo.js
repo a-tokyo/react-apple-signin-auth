@@ -50,7 +50,7 @@ export default MyAppleSigninButton;
   }, [authOptions, extraProps]);
 
   return (
-    <article>
+    <article className="wrapper">
       <header>
         <h1>{pkgJson.name}</h1>
         <p>{pkgJson.description}</p>

@@ -2,10 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import AppleSigninButton from './AppleSigninButton';
 
-const setupAppleSigninButton = (overrideProps) => (
-  <AppleSigninButton authOptions={authOptions} {...overrideProps} />
-);
-
 const authOptions = {
   clientId: 'com.example.web',
   scope: 'email name',
@@ -14,6 +10,10 @@ const authOptions = {
   nonce: 'nonce',
   usePopup: true,
 };
+
+const setupAppleSigninButton = (overrideProps) => (
+  <AppleSigninButton authOptions={authOptions} {...overrideProps} />
+);
 
 describe('<AppleSigninButton />', () => {
   it('renders basic props correctly', () => {
