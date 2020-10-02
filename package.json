@@ -21,13 +21,13 @@
     "url": "https://github.com/a-tokyo/react-apple-signin/issues"
   },
   "scripts": {
-    "test": "jest",
     "start": "webpack-dev-server --mode development",
     "transpile": "babel src -d dist --copy-files",
     "prepublishOnly": "npm run transpile",
     "build": "webpack --mode production",
     "deploy": "gh-pages -d demo/dist",
-    "publish-demo": "npm run build && npm run deploy"
+    "publish-demo": "npm run build && npm run deploy",
+    "test": "jest"
   },
   "peerDependencies": {
     "react": ">= 16.0.0",
