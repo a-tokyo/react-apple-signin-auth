@@ -162,7 +162,7 @@ export default MyAppleSigninButton;
               <div>onSuccess</div>
               <div>onError</div>
               <div>skipScript</div>
-              <div>imgProps</div>
+              <div>iconProps</div>
               <div>render</div>
             </div>
           </div>
