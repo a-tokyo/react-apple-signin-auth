@@ -1,5 +1,5 @@
 {
-  "name": "react-apple-signin",
+  "name": "react-apple-signin-auth",
   "version": "0.0.1",
   "description": " Apple signin for React using the official Apple JS SDK",
   "author": {
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/a-tokyo/react-apple-signin.git"
+    "url": "https://github.com/a-tokyo/react-apple-signin-auth.git"
   },
   "main": "dist/index.js",
   "files": [
     "dist/"
   ],
-  "homepage": "https://github.com/a-tokyo/react-apple-signin#readme",
+  "homepage": "https://github.com/a-tokyo/react-apple-signin-auth#readme",
   "bugs": {
-    "url": "https://github.com/a-tokyo/react-apple-signin/issues"
+    "url": "https://github.com/a-tokyo/react-apple-signin-auth/issues"
   },
   "scripts": {
     "start": "webpack-dev-server --mode development",

@@ -23,7 +23,7 @@ function Demo() {
 
   /** Update code string */
   useEffect(() => {
-    setCodeString(`import AppleSignin from 'react-apple-signin';
+    setCodeString(`import AppleSignin from 'react-apple-signin-auth';
 
 /** Apple Signin button */
 const MyAppleSigninButton = ({ ...rest }) => (

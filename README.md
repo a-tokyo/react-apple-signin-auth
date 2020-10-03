@@ -1,10 +1,10 @@
-# react-apple-signin
+# react-apple-signin-auth
 
  Apple signin for React using the official Apple JS SDK
 
-<a href="https://npmjs.com/package/react-apple-signin">
-  <img src="https://img.shields.io/npm/v/react-apple-signin.svg"></img>
-  <img src="https://img.shields.io/npm/dt/react-apple-signin.svg"></img>
+<a href="https://npmjs.com/package/react-apple-signin-auth">
+  <img src="https://img.shields.io/npm/v/react-apple-signin-auth.svg"></img>
+  <img src="https://img.shields.io/npm/dt/react-apple-signin-auth.svg"></img>
 </a>
 <a href="https://twitter.com/intent/follow?screen_name=ahmad_tokyo"><img src="https://img.shields.io/twitter/follow/ahmad_tokyo.svg?label=Follow%20@ahmad_tokyo" alt="Follow @ahmad_tokyo"></img></a>
 
@@ -33,7 +33,7 @@ yarn add apple-signin-auth
 ## Usage
 [Checkout the demo for a quick start!](TODO)
 ```js
-import AppleSignin from 'react-apple-signin';
+import AppleSignin from 'react-apple-signin-auth';
 
 /** Apple Signin button */
 const MyAppleSigninButton = () => (
@@ -75,7 +75,7 @@ export default MyAppleSigninButton;
 ### Raw JS functionality
 a module called `appleAuthHelpers` is also exported to allow you to use the functionality without using the UI or relying on React. This works with any kind of frontend JS, eg: react, vue, etc...
 ```js
-import { appleAuthHelpers } from 'react-apple-signin';
+import { appleAuthHelpers } from 'react-apple-signin-auth';
 
 /**
  * perform apple signIn operation
@@ -142,7 +142,7 @@ Another library exists for server/backend support for Apple signin [apple-signin
 Pull requests are highly appreciated! For major changes, please open an issue first to discuss what you would like to change.
 
 ### Getting Started
-- Clone the repo: `git clone https://github.com/a-tokyo/react-apple-signin`
+- Clone the repo: `git clone https://github.com/a-tokyo/react-apple-signin-auth`
 - Install deps: `yarn`
 - Start webpack development server on [localhost:3001](http://localhost:3001): `yarn start`
 - To run/update the tests locally, run: `yarn test -u`

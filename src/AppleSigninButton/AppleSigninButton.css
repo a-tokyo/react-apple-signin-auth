@@ -1,4 +1,4 @@
-.react-apple-signin-btn {
+.react-apple-signin-auth-btn {
   background-color: transparent;
   border: none;
   padding: 0;
@@ -15,12 +15,12 @@
   align-items: center;
 }
 
-.react-apple-signin-btn-light {
+.react-apple-signin-auth-btn-light {
   background-color: #FFF;
   color: #000;
   border-color: #000;
 }
-.react-apple-signin-btn-dark {
+.react-apple-signin-auth-btn-dark {
   background-color: #000;
   color: #FFF;
   border-color: #FFF;
