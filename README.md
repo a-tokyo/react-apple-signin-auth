@@ -8,7 +8,7 @@
 </a>
 <a href="https://twitter.com/intent/follow?screen_name=ahmad_tokyo"><img src="https://img.shields.io/twitter/follow/ahmad_tokyo.svg?label=Follow%20@ahmad_tokyo" alt="Follow @ahmad_tokyo"></img></a>
 
-[Checkout the demo for a quick start!](TODO)
+[Checkout the demo for a quick start!](https://a-tokyo.github.io/react-apple-signin-auth)
 
 ## Prerequisites
 1. You should be enrolled in [Apple Developer Program](https://developer.apple.com/programs/).
@@ -31,7 +31,7 @@ yarn add apple-signin-auth
 ```
 
 ## Usage
-[Checkout the demo for a quick start!](TODO)
+[Checkout the demo for a quick start!](https://a-tokyo.github.io/react-apple-signin-auth)
 ```js
 import AppleSignin from 'react-apple-signin-auth';
 
