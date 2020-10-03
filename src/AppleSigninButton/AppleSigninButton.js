@@ -71,7 +71,7 @@ const AppleSigninButton = ({
   }
 
   /** render button */
-  return <button className={`react-apple-signin-btn react-apple-signin-btn-${uiType}`} type="button" aria-label="Signin with apple ID" {...props} />;
+  return <button className={`react-apple-signin-auth-btn react-apple-signin-auth-btn-${uiType}`} type="button" aria-label="Signin with apple ID" {...props} />;
 };
 
 export default AppleSigninButton;
