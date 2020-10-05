@@ -23,11 +23,11 @@ Deatiled confuguration instructions can be found at [blog post](https://medium.c
 ## Installation
 
 ```bash
-npm install --save apple-signin-auth
+npm i react-apple-signin-auth
 ```
 OR
 ```bash
-yarn add apple-signin-auth
+yarn add react-apple-signin-auth
 ```
 
 ## Usage
