@@ -3,11 +3,11 @@ import React, { Fragment } from 'react';
 
 import useScript from '../hooks/useScript';
 
-import appleAuthHelpers from './appleAuthHelpers';
+import appleAuthHelpers from '../appleAuthHelpers';
 
 import './AppleSigninButton.css';
 
-import type { AppleAuthOptions } from './types';
+import type { AppleAuthOptions } from '../types';
 
 /** Apple's script src */
 const APPLE_SCRIPT_SRC: string =
