@@ -1,6 +1,6 @@
 /* @flow */
 import AppleSigninButton from './AppleSigninButton/AppleSigninButton';
-import appleAuthHelpers from './AppleSigninButton/appleAuthHelpers';
+import appleAuthHelpers from './appleAuthHelpers';
 
 export { appleAuthHelpers };
 
