@@ -14,7 +14,7 @@ const signin = async ({
   authOptions: AppleAuthOptions,
   onSuccess?: Function,
   onError?: Function,
-} = {}): Promise<?AppleAuthResponse> => {
+}): Promise<?AppleAuthResponse> => {
   try {
     /** wait for apple sript to load */
     await waitForVar('AppleID');

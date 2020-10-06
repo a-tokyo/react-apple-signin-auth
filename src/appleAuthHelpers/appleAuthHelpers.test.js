@@ -44,6 +44,15 @@ describe('appleAuthHelpers', () => {
     expect(window.AppleID.auth.init.mock.calls[0]).toBeDefined();
   });
 
+  it('should return undefined and log error if apple script is not loaded', async () => {
+    window.AppleID = null;
+    const input = {
+      authOptions: _authOptions,
+    };
+    const response = await appleAuthHelpers.signin(input);
+    expect(response).toBeUndefined();
+  });
+
   it('should return undefined and call onError if apple script is not loaded', async () => {
     window.AppleID = null;
     const input = {

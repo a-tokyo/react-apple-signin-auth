@@ -11,10 +11,10 @@ module.exports = {
   coverageThreshold: {
     global: {
       // @TODO push up over time
-      branches: 20,
-      functions: 20,
-      lines: 20,
-      statements: 20,
+      branches: 71,
+      functions: 71,
+      lines: 77,
+      statements: 77,
     },
   },
   setupFilesAfterEnv: ['./jest/setupTests.js'],
