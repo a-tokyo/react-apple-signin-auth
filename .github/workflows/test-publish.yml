@@ -59,5 +59,8 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: ./coverage # optional
-      - name: Deploy Demo
-        run: NODE_ENV=production yarn deploy
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./demo/dist
