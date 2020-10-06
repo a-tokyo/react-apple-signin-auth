@@ -50,8 +50,8 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - uses: oleksiyrudenko/gha-git-credentials@v1
+      with:
+        token: '${{ secrets.GITHUB_TOKEN }}'
       - name: Deploy Demo
-        run: |
-          git config --local user.email "$(git log --format='%ae' HEAD^!)"
-          git config --local user.name "$(git log --format='%an' HEAD^!)"
-          NODE_ENV=production yarn deploy
+        run: NODE_ENV=production yarn deploy
