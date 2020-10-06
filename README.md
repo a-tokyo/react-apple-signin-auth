@@ -6,6 +6,9 @@
   <img src="https://img.shields.io/npm/v/react-apple-signin-auth.svg"></img>
   <img src="https://img.shields.io/npm/dt/react-apple-signin-auth.svg"></img>
 </a>
+<a href="https://codecov.io/gh/A-Tokyo/react-apple-signin-auth">
+  <img src="https://img.shields.io/codecov/c/github/a-tokyo/react-apple-signin-auth.svg"></img>
+</a>
 <a href="https://twitter.com/intent/follow?screen_name=ahmad_tokyo"><img src="https://img.shields.io/twitter/follow/ahmad_tokyo.svg?label=Follow%20@ahmad_tokyo" alt="Follow @ahmad_tokyo"></img></a>
 
 [Checkout the demo for a quick start!](https://a-tokyo.github.io/react-apple-signin-auth)
