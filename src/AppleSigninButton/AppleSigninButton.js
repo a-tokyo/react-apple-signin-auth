@@ -45,7 +45,7 @@ const AppleSigninButton = ({
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    appleAuthHelpers.signin({ authOptions, onSuccess, onError });
+    appleAuthHelpers.signIn({ authOptions, onSuccess, onError });
   };
 
   /** common props */

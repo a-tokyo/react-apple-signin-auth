@@ -10,30 +10,30 @@ const _authOptions = {
   usePopup: true,
 };
 /** Response */
-const AppleIDAuthSigninFnResponse = { success: true };
+const AppleIDAuthSignInFnResponse = { success: true };
 
 describe('appleAuthHelpers', () => {
   let AppleIDAuthInitFn;
-  let AppleIDAuthSigninFn;
+  let AppleIDAuthSignInFn;
 
   beforeEach(() => {
     /** Mock apple funcs */
     AppleIDAuthInitFn = jest.fn(() => Promise.resolve(true));
-    AppleIDAuthSigninFn = jest.fn(() => Promise.resolve(AppleIDAuthSigninFnResponse));
+    AppleIDAuthSignInFn = jest.fn(() => Promise.resolve(AppleIDAuthSignInFnResponse));
     /** Mock window object */
     window.AppleID = {
       auth: {
         init: AppleIDAuthInitFn,
-        signIn: AppleIDAuthSigninFn,
+        signIn: AppleIDAuthSignInFn,
       },
     };
   });
 
-  it('should call apple functions with proper params upon signin', async () => {
+  it('should call apple functions with proper params upon signIn', async () => {
     const input = {
       authOptions: _authOptions,
     };
-    await appleAuthHelpers.signin(input);
+    await appleAuthHelpers.signIn(input);
 
     expect(window.AppleID.auth.init).toHaveBeenCalled();
     expect(window.AppleID.auth.init.mock.calls[0][0]).toEqual(
@@ -49,7 +49,7 @@ describe('appleAuthHelpers', () => {
     const input = {
       authOptions: _authOptions,
     };
-    const response = await appleAuthHelpers.signin(input);
+    const response = await appleAuthHelpers.signIn(input);
     expect(response).toBeUndefined();
   });
 
@@ -59,7 +59,7 @@ describe('appleAuthHelpers', () => {
       authOptions: _authOptions,
       onError: jest.fn(),
     };
-    const response = await appleAuthHelpers.signin(input);
+    const response = await appleAuthHelpers.signIn(input);
     expect(response).toBeUndefined();
     expect(input.onError.mock.calls[0][0]).toEqual(expect.any(Error))
   });
@@ -69,8 +69,8 @@ describe('appleAuthHelpers', () => {
       authOptions: _authOptions,
       onSuccess: jest.fn(),
     };
-    await appleAuthHelpers.signin(input);
+    await appleAuthHelpers.signIn(input);
 
-    expect(input.onSuccess.mock.calls[0][0]).toEqual(AppleIDAuthSigninFnResponse);
+    expect(input.onSuccess.mock.calls[0][0]).toEqual(AppleIDAuthSignInFnResponse);
   });
 });

@@ -4,9 +4,9 @@ import waitForVar from '../utils/waitForVar';
 import type { AppleAuthOptions, AppleAuthResponse } from '../types';
 
 /**
- * Performs an apple ID signin operation
+ * Performs an apple ID signIn operation
  */
-const signin = async ({
+const signIn = async ({
   authOptions,
   onSuccess,
   onError,
@@ -44,5 +44,5 @@ const signin = async ({
 };
 
 export default {
-  signin,
+  signIn,
 };
