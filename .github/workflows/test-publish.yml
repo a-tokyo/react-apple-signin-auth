@@ -50,8 +50,8 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-    - uses: oleksiyrudenko/gha-git-credentials@v1
-      with:
-        token: '${{ secrets.GITHUB_TOKEN }}'
+      - uses: oleksiyrudenko/gha-git-credentials@v1
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
       - name: Deploy Demo
         run: NODE_ENV=production yarn deploy
