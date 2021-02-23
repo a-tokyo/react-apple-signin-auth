@@ -80,4 +80,25 @@ describe('<AppleSigninButton />', () => {
 
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('handle the prop noDefaultStyle', () => {
+    const wrapper = shallow(
+      setupAppleSigninButton({
+        noDefaultStyle: true,
+        className: 'test_classname',
+      }),
+    );
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('handle the prop className', () => {
+    const wrapper = shallow(
+      setupAppleSigninButton({
+        noDefaultStyle: true,
+      }),
+    );
+
+    expect(wrapper).toMatchSnapshot();
+  });
 });

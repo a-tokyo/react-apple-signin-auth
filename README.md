@@ -58,6 +58,10 @@ const MyAppleSigninButton = () => (
     }} // REQUIRED
     /** General props */
     uiType="dark"
+    /** className */
+    className="apple-auth-btn"
+    /** Removes default style tag */
+    noDefaultStyle={false}
     /** Extra controlling props */
     /** Called upon signin success in case authOptions.usePopup = true -- which means auth is handled client side */
     onSuccess={(response) => console.log(response)} // default = undefined
