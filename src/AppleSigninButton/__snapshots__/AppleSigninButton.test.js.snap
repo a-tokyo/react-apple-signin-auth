@@ -2,6 +2,10 @@
 
 exports[`<AppleSigninButton /> gracefully handles falsy authOptions 1`] = `ShallowWrapper {}`;
 
+exports[`<AppleSigninButton /> handle the prop className 1`] = `ShallowWrapper {}`;
+
+exports[`<AppleSigninButton /> handle the prop noDefaultStyle 1`] = `ShallowWrapper {}`;
+
 exports[`<AppleSigninButton /> pass icon props to svg 1`] = `ShallowWrapper {}`;
 
 exports[`<AppleSigninButton /> render UI type properly 1`] = `ShallowWrapper {}`;

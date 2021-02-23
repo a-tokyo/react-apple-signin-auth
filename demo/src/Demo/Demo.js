@@ -18,6 +18,8 @@ function Demo() {
   });
   const [extraProps, setExtraProps] = useState({
     uiType: 'dark',
+    className: 'apple-auth-btn',
+    noDefaultStyle: false,
   });
   const [codeString, setCodeString] = useState('');
 
@@ -38,7 +40,15 @@ const MyAppleSigninButton = ({ ...rest }) => (
       usePopup: ${authOptions.usePopup},
     }}
     /** General props */
-    uiType="${extraProps.uiType}"
+    uiType="${extraProps.uiType}"${
+      extraProps.className
+        ? `\n    /** className */\n    className="${extraProps.className}"`
+        : ''
+    }${
+      extraProps.noDefaultStyle
+        ? `\n    /** Removes default style tag */\n    noDefaultStyle`
+        : ''
+    }
     /** Checkout README.md for further customization props. */
     /** Spread rest props if needed */
     {...rest}
@@ -158,6 +168,32 @@ export default MyAppleSigninButton;
                 }
               />
             </div>
+          </div>
+          <div>
+            className:
+            <input
+              type="text"
+              value={extraProps.className}
+              onChange={({ target: { value } }) =>
+                setExtraProps((currVal) => ({
+                  ...currVal,
+                  className: value,
+                }))
+              }
+            />
+          </div>
+          <div>
+            noDefaultStyle:
+            <input
+              type="checkbox"
+              checked={extraProps.noDefaultStyle}
+              onChange={({ target: { checked } }) =>
+                setExtraProps((currVal) => ({
+                  ...currVal,
+                  noDefaultStyle: checked,
+                }))
+              }
+            />
           </div>
           <div>
             <h3>Extra props</h3>
