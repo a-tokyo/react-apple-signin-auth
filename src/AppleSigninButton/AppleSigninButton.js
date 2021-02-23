@@ -32,6 +32,35 @@ type Props = {
   /** Rest is spread on the root button component */
 };
 
+/** css styles */
+const _style = `
+.react-apple-signin-auth-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0 8px 0 2px;
+  font-size: 14px;
+  font-size: 1em;
+  line-height: 1;
+  border: 1px solid #000;
+  overflow: hidden;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.react-apple-signin-auth-btn-light {
+  background-color: #FFF;
+  color: #000;
+  border-color: #000;
+}
+.react-apple-signin-auth-btn-dark {
+  background-color: #000;
+  color: #FFF;
+  border-color: #FFF;
+}`;
+
 const AppleSigninButton = ({
   onSuccess,
   onError,
@@ -96,38 +125,6 @@ const AppleSigninButton = ({
   /** render button */
   return (
     <>
-      {noDefaultStyle ? null : (
-        <style>
-          {`
-      .react-apple-signin-auth-btn {
-        background-color: transparent;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        border-radius: 4px;
-        padding: 0 8px 0 2px;
-        font-size: 14px;
-        font-size: 1em;
-        line-height: 1;
-        border: 1px solid #000;
-        overflow: hidden;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .react-apple-signin-auth-btn-light {
-        background-color: #FFF;
-        color: #000;
-        border-color: #000;
-      }
-      .react-apple-signin-auth-btn-dark {
-        background-color: #000;
-        color: #FFF;
-        border-color: #FFF;
-      }
-      `}
-        </style>
-      )}
       <button
         className={`${
           noDefaultStyle
@@ -138,6 +135,7 @@ const AppleSigninButton = ({
         aria-label="Signin with apple ID"
         {...props}
       />
+      {noDefaultStyle ? null : <style>{_style}</style>}
     </>
   );
 };
