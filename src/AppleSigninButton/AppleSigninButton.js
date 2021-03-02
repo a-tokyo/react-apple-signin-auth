@@ -1,5 +1,5 @@
 /** @flow */
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import useScript from '../hooks/useScript';
 
@@ -59,7 +59,9 @@ const _style = `
   background-color: #000;
   color: #FFF;
   border-color: #FFF;
-}`;
+}`
+  .replaceAll('  ', '')
+  .replaceAll('\n', '');
 
 const AppleSigninButton = ({
   onSuccess,
