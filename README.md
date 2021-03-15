@@ -79,6 +79,8 @@ const MyAppleSigninButton = () => (
 export default MyAppleSigninButton;
 ```
 
+##### Note about the response's `user` object
+`onSuccess` response object will contain the user object on the first time attempt only. Meaning if you make another signIn attempt for the same account you will not get the user object.
 ### Raw JS functionality
 a module called `appleAuthHelpers` is also exported to allow you to use the functionality without using the UI or relying on React. This works with any kind of frontend JS, eg: react, vue, etc...
 ```js
