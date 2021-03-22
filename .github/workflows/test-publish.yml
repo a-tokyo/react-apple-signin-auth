@@ -31,6 +31,8 @@ jobs:
         run: yarn install
       - name: Test
         run: yarn test --ci --bail
+      - name: Lint
+        run: yarn eslint .
       - name: Build
         run: NODE_ENV=production yarn build
       - name: Setup env vars

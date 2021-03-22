@@ -58,7 +58,7 @@ describe('appleAuthHelpers', () => {
       authOptions: _authOptions,
     };
     const response = await appleAuthHelpers.signIn(input);
-    expect(response).toBeUndefined();
+    expect(response).toBeNull();
   });
 
   it('should return undefined and call onError if apple script is not loaded', async () => {
@@ -68,7 +68,7 @@ describe('appleAuthHelpers', () => {
       onError: jest.fn(),
     };
     const response = await appleAuthHelpers.signIn(input);
-    expect(response).toBeUndefined();
+    expect(response).toBeNull();
     expect(input.onError.mock.calls[0][0]).toEqual(expect.any(Error));
   });
 

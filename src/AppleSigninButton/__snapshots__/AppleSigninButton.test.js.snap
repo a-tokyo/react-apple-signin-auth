@@ -320,6 +320,7 @@ exports[`<AppleSigninButton /> should use render prop 1`] = `
 <button
   id="test-btn"
   onClick={[Function]}
+  type="button"
 >
   <React.Fragment>
     <svg
