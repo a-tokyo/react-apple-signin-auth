@@ -83,39 +83,56 @@ export default MyAppleSigninButton;
 `onSuccess` response object will contain the user object on the first time attempt only. Meaning if you make another signIn attempt for the same account you will not get the user object.
 ### Raw JS functionality
 a module called `appleAuthHelpers` is also exported to allow you to use the functionality without using the UI or relying on React. This works with any kind of frontend JS, eg: react, vue, etc... Note that you need to load the apple script yourself.
-```js
-import { appleAuthHelpers } from 'react-apple-signin-auth';
-// OR
-// import appleAuthHelpers from 'react-apple-signin-auth/dist/appleAuthHelpers'; // @unstable - might change with upgrades
+- Importing the apple script:
+  ```js
+  // using raw html:
+  <script src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js" defer></script>
 
-/**
- * perform apple signIn operation
- */
-appleAuthHelpers.signIn({
-  authOptions: {
-    // same as above
-  },
-  onSuccess: (response) => console.log(response),
-  onError: (error) => console.error(error),
-});
+  // OR using react hooks:
+  import { useScript, appleAuthHelpers } from 'react-apple-signin-auth';
 
-// OR
+  const myComponent = () => {
+    useScript(appleAuthHelpers.APPLE_SCRIPT_SRC);
+    // ...
+  };
 
-/** promisified version - promise resolves with response on success or undefined on error -- note that this only work with usePopup: true */
-const response = await appleAuthHelpers.signIn({
-  authOptions: {
-    // same as above
-  },
-  onError: (error) => console.error(error),
-});
+  export default myComponent;
 
-if (response) {
-  console.log(response);
-} else {
-  console.error('Error performing apple signin.');
-}
+  ```
+- Using appleAuthHelpers:
+  ```js
+  import { appleAuthHelpers } from 'react-apple-signin-auth';
+  // OR
+  // import appleAuthHelpers from 'react-apple-signin-auth/dist/appleAuthHelpers'; // @unstable - might change with upgrades
 
-```
+  /**
+   * perform apple signIn operation
+   */
+  appleAuthHelpers.signIn({
+    authOptions: {
+      // same as above
+    },
+    onSuccess: (response) => console.log(response),
+    onError: (error) => console.error(error),
+  });
+
+  // OR
+
+  /** promisified version - promise resolves with response on success or undefined on error -- note that this only work with usePopup: true */
+  const response = await appleAuthHelpers.signIn({
+    authOptions: {
+      // same as above
+    },
+    onError: (error) => console.error(error),
+  });
+
+  if (response) {
+    console.log(response);
+  } else {
+    console.error('Error performing apple signin.');
+  }
+
+  ```
 
 ## Server-side authentication (nodeJS backend)
 Another library exists for server/backend support for Apple signin [apple-signin-auth](https://github.com/A-Tokyo/apple-signin-auth)

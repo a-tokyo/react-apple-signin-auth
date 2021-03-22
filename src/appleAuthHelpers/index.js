@@ -3,6 +3,9 @@ import waitForVar from '../utils/waitForVar';
 
 import type { AppleAuthOptions, AppleAuthResponse } from '../types';
 
+const APPLE_SCRIPT_SRC: string =
+  'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js';
+
 /**
  * Performs an apple ID signIn operation
  */
@@ -44,5 +47,6 @@ const signIn = async ({
 };
 
 export default {
+  APPLE_SCRIPT_SRC,
   signIn,
 };

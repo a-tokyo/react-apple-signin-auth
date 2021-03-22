@@ -7,10 +7,6 @@ import appleAuthHelpers from '../appleAuthHelpers';
 
 import type { AppleAuthOptions } from '../types';
 
-/** Apple's script src */
-const APPLE_SCRIPT_SRC: string =
-  'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js';
-
 type Props = {
   authOptions: AppleAuthOptions,
   /** Called upon signin success in case authOptions.usePopup = true -- which means auth is handled client side */
@@ -31,6 +27,21 @@ type Props = {
   noDefaultStyle?: boolean,
   /** Rest is spread on the root button component */
 };
+
+/**
+ * String.prototype.replaceAll() polyfill
+ * https://gomakethings.com/how-to-replace-a-section-of-a-string-with-another-one-with-vanilla-js/
+ * @author Chris Ferdinandi
+ * @license MIT
+ */
+if (!String.prototype.replaceAll) {
+  String.prototype.replaceAll = function (str, newStr) {
+    return Object.prototype.toString.call(str).toLowerCase() ===
+      '[object regexp]'
+      ? this.replace(str, newStr)
+      : this.replace(new RegExp(str, 'g'), newStr);
+  };
+}
 
 /** css styles */
 const _style = `
@@ -76,7 +87,7 @@ const AppleSigninButton = ({
   ...rest
 }: Props) => {
   /** load script if neccessary */
-  useScript(skipScript ? null : APPLE_SCRIPT_SRC);
+  useScript(skipScript ? null : appleAuthHelpers.APPLE_SCRIPT_SRC);
 
   /** Button click handler */
   const handleClick = (e) => {

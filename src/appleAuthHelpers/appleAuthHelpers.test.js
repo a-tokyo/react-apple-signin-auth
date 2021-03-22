@@ -19,7 +19,9 @@ describe('appleAuthHelpers', () => {
   beforeEach(() => {
     /** Mock apple funcs */
     AppleIDAuthInitFn = jest.fn(() => Promise.resolve(true));
-    AppleIDAuthSignInFn = jest.fn(() => Promise.resolve(AppleIDAuthSignInFnResponse));
+    AppleIDAuthSignInFn = jest.fn(() =>
+      Promise.resolve(AppleIDAuthSignInFnResponse),
+    );
     /** Mock window object */
     window.AppleID = {
       auth: {
@@ -27,6 +29,12 @@ describe('appleAuthHelpers', () => {
         signIn: AppleIDAuthSignInFn,
       },
     };
+  });
+
+  it('should export APPLE_SCRIPT_SRC', async () => {
+    expect(appleAuthHelpers.APPLE_SCRIPT_SRC).toBe(
+      'https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js',
+    );
   });
 
   it('should call apple functions with proper params upon signIn', async () => {
@@ -61,7 +69,7 @@ describe('appleAuthHelpers', () => {
     };
     const response = await appleAuthHelpers.signIn(input);
     expect(response).toBeUndefined();
-    expect(input.onError.mock.calls[0][0]).toEqual(expect.any(Error))
+    expect(input.onError.mock.calls[0][0]).toEqual(expect.any(Error));
   });
 
   it('should call onSuccess upon success', async () => {
@@ -71,6 +79,8 @@ describe('appleAuthHelpers', () => {
     };
     await appleAuthHelpers.signIn(input);
 
-    expect(input.onSuccess.mock.calls[0][0]).toEqual(AppleIDAuthSignInFnResponse);
+    expect(input.onSuccess.mock.calls[0][0]).toEqual(
+      AppleIDAuthSignInFnResponse,
+    );
   });
 });
