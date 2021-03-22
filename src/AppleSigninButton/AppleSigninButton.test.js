@@ -1,5 +1,4 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import AppleSigninButton from './AppleSigninButton';
 
 const authOptions = {
@@ -15,15 +14,33 @@ const setupAppleSigninButton = (overrideProps) => (
   <AppleSigninButton authOptions={authOptions} {...overrideProps} />
 );
 
+const _originalAppleId = global.AppleID;
+
 describe('<AppleSigninButton />', () => {
+  beforeEach(() => {
+    global.AppleID = {
+      auth: {
+        signIn: jest.fn(() => Promise.resolve({ is_test: true })),
+      },
+    };
+  });
+
+  afterAll(() => {
+    if (_originalAppleId) {
+      global.AppleID = _originalAppleId;
+    } else {
+      delete global.AppleID;
+    }
+  });
+
   it('renders basic props correctly', () => {
-    const wrapper = shallow(setupAppleSigninButton());
+    const wrapper = global.shallow(setupAppleSigninButton());
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('skips script addition via prop', () => {
-    const wrapper = shallow(
+    const wrapper = global.shallow(
       setupAppleSigninButton({
         skipScript: true,
       }),
@@ -33,14 +50,14 @@ describe('<AppleSigninButton />', () => {
   });
 
   it('render UI type properly', () => {
-    const wrapperLight = shallow(
+    const wrapperLight = global.shallow(
       setupAppleSigninButton({
         uiType: 'light',
       }),
     );
 
     expect(wrapperLight).toMatchSnapshot();
-    const wrapperDark = shallow(
+    const wrapperDark = global.shallow(
       setupAppleSigninButton({
         uiType: 'dark',
       }),
@@ -50,9 +67,9 @@ describe('<AppleSigninButton />', () => {
   });
 
   it('should use render prop', () => {
-    const wrapper = shallow(
+    const wrapper = global.shallow(
       setupAppleSigninButton({
-        render: (props) => <button id="test-btn" {...props} />,
+        render: (props) => <button type="button" id="test-btn" {...props} />,
       }),
     );
 
@@ -60,7 +77,7 @@ describe('<AppleSigninButton />', () => {
   });
 
   it('pass icon props to svg', () => {
-    const wrapper = shallow(
+    const wrapper = global.shallow(
       setupAppleSigninButton({
         iconProps: {
           width: '30px',
@@ -72,7 +89,7 @@ describe('<AppleSigninButton />', () => {
   });
 
   it('gracefully handles falsy authOptions', () => {
-    const wrapper = shallow(
+    const wrapper = global.shallow(
       setupAppleSigninButton({
         authOptions: null,
       }),
@@ -82,7 +99,7 @@ describe('<AppleSigninButton />', () => {
   });
 
   it('handle the prop noDefaultStyle', () => {
-    const wrapper = shallow(
+    const wrapper = global.shallow(
       setupAppleSigninButton({
         noDefaultStyle: true,
         className: 'test_classname',
@@ -93,7 +110,7 @@ describe('<AppleSigninButton />', () => {
   });
 
   it('handle the prop className', () => {
-    const wrapper = shallow(
+    const wrapper = global.shallow(
       setupAppleSigninButton({
         noDefaultStyle: true,
       }),

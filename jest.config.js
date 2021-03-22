@@ -8,6 +8,7 @@ module.exports = {
     '!**/__flow__/**',
   ],
   coverageDirectory: './coverage',
+  coverageReporters: ['lcov', 'json', 'text'],
   coverageThreshold: {
     global: {
       // @TODO push up over time
@@ -17,7 +18,7 @@ module.exports = {
       statements: 77,
     },
   },
-  setupFilesAfterEnv: ['./jest/setupTests.js'],
+  setupFiles: ['./jest/setupTests.js'],
   moduleNameMapper: {
     '\\.(css|less|sass|scss)$': '<rootDir>/jest/__mocks__/styleMock.js',
     '\\.(gif|ttf|eot|svg)$': '<rootDir>/jest/__mocks__/fileMock.js',

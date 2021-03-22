@@ -1,12 +1,12 @@
 /* @flow */
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 /**
  * useScript hook
  *
  * https://usehooks.com/useScript
  */
-function useScript(src: string) {
+function useScript(src: ?string) {
   useEffect(
     () => {
       // Allow falsy src value if waiting on other data needed for

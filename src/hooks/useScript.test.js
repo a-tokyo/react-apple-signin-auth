@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 
 import useScript from './useScript';
 
@@ -21,9 +21,7 @@ describe('useScript', () => {
   it('should append the script when available', () => {
     expect(document.querySelectorAll('script').length).toBe(0);
 
-   renderHook(() =>
-      useScript('https://script.com'),
-    );
+    renderHook(() => useScript('https://script.com'));
 
     expect(document.querySelectorAll('script').length).toBe(1);
   });
@@ -31,9 +29,7 @@ describe('useScript', () => {
   it('should append the script when available', () => {
     expect(document.querySelectorAll('script').length).toBe(0);
 
-    renderHook(() =>
-      useScript('https://script.com'),
-    );
+    renderHook(() => useScript('https://script.com'));
 
     expect(document.querySelectorAll('script').length).toBe(1);
   });

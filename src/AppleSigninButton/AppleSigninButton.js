@@ -10,13 +10,13 @@ import type { AppleAuthOptions } from '../types';
 type Props = {
   authOptions: AppleAuthOptions,
   /** Called upon signin success in case authOptions.usePopup = true -- which means auth is handled client side */
-  onSuccess?: Function,
+  onSuccess: Function,
   /** Called upon signin error */
   onError: Function,
   /** Skips loading the apple script if true */
   skipScript?: boolean,
   /** Apple image props */
-  iconProps?: Object,
+  iconProps: Object,
   /** render function - called with all props - can be used to fully customize the UI by rendering your own component  */
   render?: Function,
   /** UI type */
@@ -27,21 +27,6 @@ type Props = {
   noDefaultStyle?: boolean,
   /** Rest is spread on the root button component */
 };
-
-/**
- * String.prototype.replaceAll() polyfill
- * https://gomakethings.com/how-to-replace-a-section-of-a-string-with-another-one-with-vanilla-js/
- * @author Chris Ferdinandi
- * @license MIT
- */
-if (!String.prototype.replaceAll) {
-  String.prototype.replaceAll = function (str, newStr) {
-    return Object.prototype.toString.call(str).toLowerCase() ===
-      '[object regexp]'
-      ? this.replace(str, newStr)
-      : this.replace(new RegExp(str, 'g'), newStr);
-  };
-}
 
 /** css styles */
 const _style = `
@@ -70,20 +55,18 @@ const _style = `
   background-color: #000;
   color: #FFF;
   border-color: #FFF;
-}`
-  .replaceAll('  ', '')
-  .replaceAll('\n', '');
+}`.replace(/ {2}|\n/g, '');
 
 const AppleSigninButton = ({
   onSuccess,
   onError,
-  skipScript,
+  skipScript = false,
   authOptions,
   iconProps,
   render,
   uiType = 'dark',
   className,
-  noDefaultStyle,
+  noDefaultStyle = false,
   ...rest
 }: Props) => {
   /** load script if neccessary */

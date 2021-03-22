@@ -44,6 +44,7 @@ const signIn = async ({
       console.error(err);
     }
   }
+  return null;
 };
 
 export default {

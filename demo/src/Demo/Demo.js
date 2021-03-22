@@ -80,7 +80,7 @@ export default MyAppleSigninButton;
           <h2>Props</h2>
           <div className="options-container">
             <h3>Auth options</h3>
-            <label>Client ID:</label>
+            <label htmlFor="clientId">Client ID:</label>
             <input
               type="text"
               placeholder="clientId"
@@ -89,7 +89,7 @@ export default MyAppleSigninButton;
                 setAuthOptions((currVal) => ({ ...currVal, clientId: value }))
               }
             />
-            <label>Scope:</label>
+            <label htmlFor="scope">Scope:</label>
             <input
               type="text"
               placeholder="scope"
@@ -98,7 +98,9 @@ export default MyAppleSigninButton;
                 setAuthOptions((currVal) => ({ ...currVal, scope: value }))
               }
             />
-            <label>redirectURI - MUST NOT have a trailing slash:</label>
+            <label htmlFor="redirectURI">
+              redirectURI - MUST NOT have a trailing slash:
+            </label>
             <input
               type="text"
               placeholder="redirectURI"
@@ -110,7 +112,7 @@ export default MyAppleSigninButton;
                 }))
               }
             />
-            <label>State:</label>
+            <label htmlFor="redirectURI">State:</label>
             <input
               type="text"
               placeholder="state"
@@ -119,7 +121,7 @@ export default MyAppleSigninButton;
                 setAuthOptions((currVal) => ({ ...currVal, state: value }))
               }
             />
-            <label>Nonce:</label>
+            <label htmlFor="nonce">Nonce:</label>
             <input
               type="text"
               placeholder="nonce"
@@ -139,7 +141,7 @@ export default MyAppleSigninButton;
                   }))
                 }
               />
-              <label>Use Popup:</label>
+              <label htmlFor="use_popup">Use Popup:</label>
             </div>
           </div>
           <div>
@@ -149,7 +151,7 @@ export default MyAppleSigninButton;
               <input
                 type="checkbox"
                 checked={extraProps.uiType === 'light'}
-                onChange={({ target: { checked } }) =>
+                onChange={() =>
                   setExtraProps((currVal) => ({
                     ...currVal,
                     uiType: 'light',
@@ -160,7 +162,7 @@ export default MyAppleSigninButton;
               <input
                 type="checkbox"
                 checked={extraProps.uiType === 'dark'}
-                onChange={({ target: { checked } }) =>
+                onChange={() =>
                   setExtraProps((currVal) => ({
                     ...currVal,
                     uiType: 'dark',
@@ -208,7 +210,11 @@ export default MyAppleSigninButton;
         </section>
       </div>
       <footer>
-        Built with ❤️ by Ahmed Tokyo
+        Built with{' '}
+        <span role="img" aria-label="heart">
+          ❤️
+        </span>{' '}
+        by Ahmed Tokyo
         <div>version: {pkgJson.version}</div>
       </footer>
     </article>
