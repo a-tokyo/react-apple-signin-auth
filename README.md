@@ -13,6 +13,10 @@
 
 [Checkout the demo for a quick start!](https://a-tokyo.github.io/react-apple-signin-auth)
 
+<a href="https://a-tokyo.github.io/react-apple-signin-auth">
+<img src="https://imgur.com/Z8avh0K"></img>
+</a>
+
 ## Prerequisites
 1. You should be enrolled in [Apple Developer Program](https://developer.apple.com/programs/).
 2. Please have a look at [Apple documentation](

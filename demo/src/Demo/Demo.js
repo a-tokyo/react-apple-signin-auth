@@ -215,7 +215,10 @@ export default MyAppleSigninButton;
           ❤️
         </span>{' '}
         by Ahmed Tokyo
-        <div>version: {pkgJson.version}</div>
+        <div>
+          version:
+          {pkgJson.version}
+        </div>
       </footer>
     </article>
   );
