@@ -14,7 +14,7 @@
 [Checkout the demo for a quick start!](https://a-tokyo.github.io/react-apple-signin-auth)
 
 <a href="https://a-tokyo.github.io/react-apple-signin-auth">
-<img src="https://imgur.com/Z8avh0K"></img>
+<img src="https://i.imgur.com/Z8avh0K.png"></img>
 </a>
 
 ## Prerequisites
