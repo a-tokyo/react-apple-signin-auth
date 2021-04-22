@@ -109,6 +109,26 @@ describe('<AppleSigninButton />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('handle the prop buttonExtraChildren string', () => {
+    const wrapper = global.shallow(
+      setupAppleSigninButton({
+        buttonExtraChildren: 'Sign up with Apple',
+      }),
+    );
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('handle the prop buttonExtraChildren node', () => {
+    const wrapper = global.shallow(
+      setupAppleSigninButton({
+        buttonExtraChildren: <span>Sign up with Apple</span>,
+      }),
+    );
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('handle the prop className', () => {
     const wrapper = global.shallow(
       setupAppleSigninButton({

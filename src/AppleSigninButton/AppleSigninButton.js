@@ -25,6 +25,8 @@ type Props = {
   className?: ?string,
   /** prevents rendering of default styles */
   noDefaultStyle?: boolean,
+  /** Allows to change the button's children, eg: for changing the button text */
+  buttonExtraChildren?: string | React$Node,
   /** Rest is spread on the root button component */
 };
 
@@ -67,6 +69,7 @@ const AppleSigninButton = ({
   uiType = 'dark',
   className,
   noDefaultStyle = false,
+  buttonExtraChildren = 'Continue with Apple',
   ...rest
 }: Props) => {
   /** load script if neccessary */
@@ -106,7 +109,7 @@ const AppleSigninButton = ({
             />
           </g>
         </svg>
-        Continue with Apple
+        {buttonExtraChildren}
       </>
     ),
     onClick: handleClick,

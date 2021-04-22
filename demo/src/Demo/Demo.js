@@ -20,6 +20,7 @@ function Demo() {
     uiType: 'dark',
     className: 'apple-auth-btn',
     noDefaultStyle: false,
+    buttonExtraChildren: '',
   });
   const [codeString, setCodeString] = useState('');
 
@@ -47,6 +48,10 @@ const MyAppleSigninButton = ({ ...rest }) => (
     }${
       extraProps.noDefaultStyle
         ? `\n    /** Removes default style tag */\n    noDefaultStyle`
+        : ''
+    }${
+      extraProps.buttonExtraChildren
+        ? `\n    /** Allows to change the button's children, eg: for changing the button text */\n    buttonExtraChildren=${extraProps.buttonExtraChildren}`
         : ''
     }
     /** Checkout README.md for further customization props. */
@@ -193,6 +198,19 @@ export default MyAppleSigninButton;
                 setExtraProps((currVal) => ({
                   ...currVal,
                   noDefaultStyle: checked,
+                }))
+              }
+            />
+          </div>
+          <div>
+            buttonExtraChildren:
+            <input
+              type="text"
+              value={extraProps.buttonExtraChildren}
+              onChange={({ target: { value } }) =>
+                setExtraProps((currVal) => ({
+                  ...currVal,
+                  buttonExtraChildren: value,
                 }))
               }
             />

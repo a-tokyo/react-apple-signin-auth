@@ -66,6 +66,8 @@ const MyAppleSigninButton = () => (
     className="apple-auth-btn"
     /** Removes default style tag */
     noDefaultStyle={false}
+    /** Allows to change the button's children, eg: for changing the button text */
+    buttonExtraChildren="Continue with Apple"
     /** Extra controlling props */
     /** Called upon signin success in case authOptions.usePopup = true -- which means auth is handled client side */
     onSuccess={(response) => console.log(response)} // default = undefined
