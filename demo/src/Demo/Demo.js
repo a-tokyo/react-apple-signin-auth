@@ -20,7 +20,7 @@ function Demo() {
     uiType: 'dark',
     className: 'apple-auth-btn',
     noDefaultStyle: false,
-    buttonExtraChildren: '',
+    buttonExtraChildren: 'Continue with Apple',
   });
   const [codeString, setCodeString] = useState('');
 
