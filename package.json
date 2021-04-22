@@ -1,6 +1,6 @@
 {
   "name": "react-apple-signin-auth",
-  "version": "0.0.13",
+  "version": "0.1.0",
   "description": " Apple signin for React using the official Apple JS SDK",
   "author": {
     "name": "Ahmed Tarek",
