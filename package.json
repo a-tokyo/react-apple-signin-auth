@@ -1,6 +1,6 @@
 {
   "name": "react-apple-signin-auth",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": " Apple signin for React using the official Apple JS SDK",
   "author": {
     "name": "Ahmed Tarek",
@@ -20,7 +20,7 @@
     "url": "https://github.com/a-tokyo/react-apple-signin-auth/issues"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack serve --mode development",
     "transpile": "rm -rf dist && babel src -d dist --copy-files && rm -rf **/__snapshots__",
     "prepublishOnly": "npm run transpile",
     "build": "webpack --mode production",
