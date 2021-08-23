@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "webpack serve --mode development",
-    "transpile": "rm -rf dist && babel src -d dist --copy-files && rm -rf dist/**/__snapshots__ && find ./dist -name '*.js.snap' -o -name '*.test.js*' -type f -delete",
+    "transpile": "rm -rf dist && babel src -d dist --copy-files && rm -rf dist/**/__snapshots__ && find ./dist -name '*.test.js*' -type f -delete",
     "prepublishOnly": "npm run transpile",
     "build": "webpack --mode production",
     "deploy": "gh-pages -d demo/dist",
