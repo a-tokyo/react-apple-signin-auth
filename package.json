@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "webpack serve --mode development",
-    "transpile": "rm -rf dist && babel src -d dist --copy-files && rm -rf **/__snapshots__",
+    "transpile": "rm -rf dist && babel src -d dist --copy-files && rm -rf dist/**/__snapshots__ && rm -rf dist/**/*.test.js",
     "prepublishOnly": "npm run transpile",
     "build": "webpack --mode production",
     "deploy": "gh-pages -d demo/dist",
