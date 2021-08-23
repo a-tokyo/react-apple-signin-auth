@@ -77,8 +77,10 @@ const AppleSigninButton = ({
 
   /** Button click handler */
   const handleClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     appleAuthHelpers.signIn({ authOptions, onSuccess, onError });
   };
 
