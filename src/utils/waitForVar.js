@@ -8,7 +8,7 @@
  * - eg: `waitForVar('FB', { pollFrequency: 500, retries: 2, parent: window || global }).then(FB => FB.test())`
  * - eg: `waitForVar('FB', { retries: ({ retries } => retries * 500) }).then(FB => FB.test())`
  */
-const waitForVar = async (
+const waitForVar = (
   name,
   {
     pollFrequency = 1000,
@@ -22,21 +22,20 @@ const waitForVar = async (
 ) => {
   // eslint-disable-next-line no-prototype-builtins
   if (parent && parent.hasOwnProperty(name)) {
-    return parent[name];
+    return Promise.resolve(parent[name]);
   }
   if (!inRetries) {
-    return undefined;
+    return Promise.resolve(undefined);
   }
   const retries = inRetries - 1;
-  await new Promise((resolve) =>
+  return new Promise((resolve) =>
     setTimeout(
       resolve,
       typeof pollFrequency === 'function'
         ? pollFrequency({ retries })
         : pollFrequency,
     ),
-  );
-  return waitForVar(name, { pollFrequency, parent, retries });
+  ).then(() => waitForVar(name, { pollFrequency, parent, retries }));
 };
 
 export default waitForVar;
