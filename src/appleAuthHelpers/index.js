@@ -9,7 +9,7 @@ const APPLE_SCRIPT_SRC: string =
 /**
  * Performs an apple ID signIn operation
  */
-const signIn = async ({
+const signIn = ({
   authOptions,
   onSuccess,
   onError,
