@@ -35,6 +35,16 @@ const signIn = ({
         }
         /** resolve with the reponse */
         return response;
+      }).catch((err) => {
+        if (onError) {
+          /** Call onError catching the error */
+          onError(err);
+        } else {
+          /** Log the error to help debug */
+          console.error(err);
+        }
+  
+        return null;
       });
     })
     .catch((err) => {
