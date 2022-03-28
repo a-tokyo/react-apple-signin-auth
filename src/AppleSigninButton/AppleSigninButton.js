@@ -72,7 +72,7 @@ const AppleSigninButton = ({
   buttonExtraChildren = 'Continue with Apple',
   ...rest
 }: Props) => {
-  /** load script if neccessary */
+  /** load script if necessary */
   useScript(skipScript ? null : appleAuthHelpers.APPLE_SCRIPT_SRC);
 
   /** Button click handler */
@@ -81,7 +81,19 @@ const AppleSigninButton = ({
       e.preventDefault();
       e.stopPropagation();
     }
-    appleAuthHelpers.signIn({ authOptions, onSuccess, onError });
+    appleAuthHelpers
+      .signIn({ authOptions })
+      .then((response) => {
+        /** This is only called in case usePopup is true */
+        if (onSuccess) {
+          onSuccess(response);
+        }
+      })
+      .catch((err) => {
+        if (onError) {
+          onError(err);
+        }
+      });
   };
 
   /** common props */

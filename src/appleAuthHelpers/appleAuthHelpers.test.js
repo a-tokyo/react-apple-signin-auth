@@ -52,27 +52,24 @@ describe('appleAuthHelpers', () => {
     expect(window.AppleID.auth.init.mock.calls[0]).toBeDefined();
   });
 
-  it('should return undefined and log error if apple script is not loaded', async () => {
-    window.AppleID = null;
-    const input = {
-      authOptions: _authOptions,
-    };
-    const response = await appleAuthHelpers.signIn(input);
-    expect(response).toBeNull();
-  });
-
-  it('should return undefined and call onError if apple script is not loaded', async () => {
+  it.only('should throw error if apple script is not loaded', async () => {
     window.AppleID = null;
     const input = {
       authOptions: _authOptions,
       onError: jest.fn(),
     };
-    const response = await appleAuthHelpers.signIn(input);
-    expect(response).toBeNull();
-    expect(input.onError.mock.calls[0][0]).toEqual(expect.any(Error));
+    let error;
+    try {
+      const response = await appleAuthHelpers.signIn(input);
+      expect(response).toBeNull();
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(expect.any(Error));
+    expect(error.message).toEqual('Error loading apple script');
   });
 
-  it('should return undefined and call onError if apple signIn throws', async () => {
+  it('should throw error if apple signIn throws', async () => {
     window.AppleID = {
       auth: {
         init: AppleIDAuthInitFn,
@@ -83,13 +80,18 @@ describe('appleAuthHelpers', () => {
       authOptions: _authOptions,
       onError: jest.fn(),
     };
-    const response = await appleAuthHelpers.signIn(input);
-    expect(input.onError.mock.calls[0][0]).toEqual(expect.any(Error));
-    expect(input.onError.mock.calls[0][0].message).toEqual('test error');
-    expect(response).toBeNull();
+    let error;
+    try {
+      const response = await appleAuthHelpers.signIn(input);
+      expect(response).toBeNull();
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(expect.any(Error));
+    expect(error.message).toEqual('test error');
   });
 
-  it('should return undefined and call onError if apple init throws', async () => {
+  it('should throw error if apple init throws', async () => {
     window.AppleID = {
       auth: {
         init: () => {
@@ -102,50 +104,24 @@ describe('appleAuthHelpers', () => {
       authOptions: _authOptions,
       onError: jest.fn(),
     };
-    const response = await appleAuthHelpers.signIn(input);
-    expect(response).toBeNull();
-    expect(input.onError.mock.calls[0][0]).toEqual(expect.any(Error));
+    let error;
+    try {
+      const response = await appleAuthHelpers.signIn(input);
+      expect(response).toBeNull();
+    } catch (err) {
+      error = err;
+    }
+    expect(error).toEqual(expect.any(Error));
+    expect(error.message).toEqual('test error');
   });
 
-  it('should return undefined and log error if apple signIn throws', async () => {
-    window.AppleID = {
-      auth: {
-        init: AppleIDAuthInitFn,
-        signIn: () => Promise.reject(new Error('test error')),
-      },
-    };
-    const input = {
-      authOptions: _authOptions,
-    };
-    const response = await appleAuthHelpers.signIn(input);
-    expect(response).toBeNull();
-  });
-
-  it('should return undefined and log error if apple init throws', async () => {
-    window.AppleID = {
-      auth: {
-        init: () => {
-          throw new Error('test error');
-        },
-        signIn: AppleIDAuthSignInFn,
-      },
-    };
-    const input = {
-      authOptions: _authOptions,
-    };
-    const response = await appleAuthHelpers.signIn(input);
-    expect(response).toBeNull();
-  });
-
-  it('should call onSuccess upon success', async () => {
+  it('should resolve with response on success', async () => {
     const input = {
       authOptions: _authOptions,
       onSuccess: jest.fn(),
     };
-    await appleAuthHelpers.signIn(input);
+    const response = await appleAuthHelpers.signIn(input);
 
-    expect(input.onSuccess.mock.calls[0][0]).toEqual(
-      AppleIDAuthSignInFnResponse,
-    );
+    expect(response).toEqual(AppleIDAuthSignInFnResponse);
   });
 });
