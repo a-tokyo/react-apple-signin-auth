@@ -29,6 +29,7 @@ describe('appleAuthHelpers', () => {
         signIn: AppleIDAuthSignInFn,
       },
     };
+    console.log('Ran beforeEach successfully', window.AppleID);
   });
 
   it('should export APPLE_SCRIPT_SRC', async () => {
