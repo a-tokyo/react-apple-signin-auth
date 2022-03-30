@@ -206,7 +206,7 @@ export default MyAppleSigninButton;
             buttonExtraChildren:
             <input
               type="text"
-              value={extraProps.buttonExtraChildren}
+              value={`"${extraProps.buttonExtraChildren}"`}
               onChange={({ target: { value } }) =>
                 setExtraProps((currVal) => ({
                   ...currVal,
@@ -229,10 +229,10 @@ export default MyAppleSigninButton;
       </div>
       <footer>
         Built with{' '}
-        <span role="img" aria-label="heart">
+        <span role="img" aria-label="love">
           ❤️
         </span>{' '}
-        by Ahmed Tokyo
+        by <a href="https://ahmedtokyo.com">Ahmed Tokyo</a>
         <div>
           version:
           {pkgJson.version}
