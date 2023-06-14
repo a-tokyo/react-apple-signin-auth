@@ -89,7 +89,7 @@ export default MyAppleSigninButton;
 `onSuccess` response object will contain the user object on the first time attempt only. Meaning if you make another signIn attempt for the same account you will not get the user object.
 ### Raw JS functionality
 a module called `appleAuthHelpers` is also exported to allow you to use the functionality without using the UI or relying on React. This works with any kind of frontend JS, eg: react, vue, etc... Note that you need to load the apple script yourself.
-- Importing the apple script:
+- First, import the apple script:
   ```js
   // using raw html:
   <script src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js" defer></script>
@@ -105,7 +105,7 @@ a module called `appleAuthHelpers` is also exported to allow you to use the func
   export default myComponent;
 
   ```
-- Using appleAuthHelpers:
+- Then, use appleAuthHelpers:
   ```js
   import { appleAuthHelpers } from 'react-apple-signin-auth';
   // OR
