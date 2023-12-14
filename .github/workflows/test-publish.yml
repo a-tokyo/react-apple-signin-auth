@@ -8,19 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+      - uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ubuntu-latest-node-12.x-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ubuntu-latest-node-18.x-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ubuntu-latest-node-12.x-yarn-
-      - uses: actions/setup-node@v1
+            ubuntu-latest-node-18.x-yarn-
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 18.x
           registry-url: https://registry.npmjs.org/
       - name: Install
         run: yarn install
@@ -36,19 +36,19 @@ jobs:
     if: success() && github.ref == 'refs/heads/main'
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Get yarn cache
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v1
+      - uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache.outputs.dir }}
-          key: ubuntu-latest-node-12.x-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ubuntu-latest-node-18.x-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ubuntu-latest-node-12.x-yarn-
-      - uses: actions/setup-node@v1
+            ubuntu-latest-node-18.x-yarn-
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 18.x
           registry-url: https://registry.npmjs.org/
       - name: Install
         run: yarn install
