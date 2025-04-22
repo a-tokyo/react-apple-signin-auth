@@ -25,7 +25,7 @@ https://developer.apple.com/sign-in-with-apple/get-started/) related to "Sign in
 4. You should generate private key for your Service ID in your Apple Developer Account.
 
 ## Apple Signin Setup
-Deatiled confuguration instructions can be found at [blog post](https://medium.com/@artyomefremov/add-sign-in-with-apple-button-to-your-website-today-part-1-12ed1444623a?postPublishedType=initial) and [Apple docs](https://help.apple.com/developer-account/#/dev1c0e25352) and [official apple docs for webpage signin](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js/configuring_your_webpage_for_sign_in_with_apple).
+Detailed configuration instructions can be found at [blog post](https://medium.com/@artyomefremov/add-sign-in-with-apple-button-to-your-website-today-part-1-12ed1444623a?postPublishedType=initial) and [Apple docs](https://help.apple.com/developer-account/#/dev1c0e25352) and [official apple docs for webpage signin](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_js/configuring_your_webpage_for_sign_in_with_apple).
 
 ## Installation
 
