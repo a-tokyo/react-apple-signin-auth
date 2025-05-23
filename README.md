@@ -11,7 +11,8 @@
 </a>
 <a href="https://twitter.com/intent/follow?screen_name=ahmad_tokyo"><img src="https://img.shields.io/twitter/follow/ahmad_tokyo.svg?label=Follow%20@ahmad_tokyo" alt="Follow @ahmad_tokyo"></img></a>
 
-[Checkout the demo for a quick start!](https://a-tokyo.github.io/react-apple-signin-auth)
+[Checkout the demo for a quick start!](https://react-apple-signin-auth.ahmedtokyo.com)
+<!-- [Checkout the demo for a quick start!](https://a-tokyo.github.io/react-apple-signin-auth) -->
 
 <a href="https://a-tokyo.github.io/react-apple-signin-auth">
 <img src="https://i.imgur.com/Z8avh0K.png"></img>
