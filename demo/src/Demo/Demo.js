@@ -315,9 +315,10 @@ export default MyAppleSigninButton;
               </div>
             </div>
           </div>
-          <div>
+          {/* Extra Props Section - Restructured for better UI */}
+          <div className="options-container extra-props-container">
             <h3>Extra props</h3>
-            <div>
+            <div className="extra-props-list">
               <span>onSuccess</span>
               <span>onError</span>
               <span>skipScript</span>

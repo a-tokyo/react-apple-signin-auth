@@ -380,3 +380,103 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
 }
 
 /* --- End Custom Checkbox Styles --- */
+
+/* --- Extra Props Section Styles --- */
+.extra-props-container {
+  /* Uses .options-container for general spacing, add specifics if needed */
+  /* margin-top: 20px; */ /* If more space is needed above this section */
+}
+
+.extra-props-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow props to wrap to the next line */
+  gap: 10px; /* Space between prop tags */
+  justify-content: flex-start; /* Align tags to the start */
+  padding-top: 10px; /* Space below the h3 heading */
+}
+
+.extra-props-list span {
+  background-color: #e9ecef; /* Light grey background */
+  color: #495057; /* Darker grey text */
+  padding: 8px 12px;
+  border-radius: 16px; /* Pill shape */
+  font-size: 0.9em;
+  font-family: monospace; /* Use a monospace font for prop names */
+  border: 1px solid #dee2e6; /* Subtle border */
+}
+
+/* --- End Extra Props Section Styles --- */
+
+/* OLD Styles - Review and remove if redundant 
+   The following block contains old CSS rules that were specific to the previous structure
+   of the UI Props section. They have been commented out as they are likely superseded
+   by the new .form-row and .form-group based styling.
+*/
+
+/*
+div.container > section:nth-child(2) > div:nth-of-type(2) > div {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 15px; 
+  flex-wrap: wrap; 
+}
+
+div.container > section:nth-child(2) > div:nth-of-type(3),
+div.container > section:nth-child(2) > div:nth-of-type(4),
+div.container > section:nth-child(2) > div:nth-of-type(5) {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 15px; 
+}
+
+div.container > section:nth-child(2) > div:nth-of-type(3) > input[type="text"],
+div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"] {
+  flex-grow: 1; 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  min-width: 150px; 
+}
+
+div.container > section:nth-child(2) > div:nth-of-type(2) > div > input[type="checkbox"],
+div.container > section:nth-child(2) > div:nth-of-type(4) > input[type="checkbox"] {
+  width: auto; 
+  margin-left: 5px; 
+}
+
+div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
+   margin-bottom: 15px; 
+}
+*/
+
+/* AdSense Ad Container Styles */
+/* Moved to the bottom for better organization */
+.ad-container {
+  display: block;
+  margin: 20px 0 0;
+  background-color: #f9f9f9;
+  overflow: hidden; /* Key to clip oversized ad content */
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Target the ins tag specifically within the ad container */
+.ad-container ins.adsbygoogle {
+  display: block; /* Reinforce block display */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Target any iframe Google might inject within the ad container or ins tag */
+.ad-container ins.adsbygoogle iframe,
+.ad-container > iframe { /* If iframe is a direct child of .ad-container */
+  display: block; /* Ensure iframe behaves like a block */
+  max-width: 100% !important; /* Attempt to override inline widths on iframe */
+  box-sizing: border-box;
+  margin: 0 auto; /* Center the iframe if it's narrower than the container */
+}
