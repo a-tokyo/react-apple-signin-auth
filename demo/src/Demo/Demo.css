@@ -32,8 +32,9 @@
   margin-bottom: 5px;
 }
 
-.options-container > input[type="text"],
-.options-container > input[type="checkbox"] {
+/* Updated to target inputs within form-group */
+.options-container .form-group > input[type="text"],
+.options-container .form-group > input[type="checkbox"] {
   display: block;
   width: 100%;
   padding: 10px;
@@ -42,14 +43,63 @@
   box-sizing: border-box;
 }
 
-.options-container > div {
+/* Styles for new form layout */
+.form-row {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-wrap: wrap; /* Allow wrapping on very small screens if needed */
+  gap: 20px; /* Space between form groups in a row */
+  margin-bottom: 15px; /* Space below each row */
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Allow groups to share space equally */
+  min-width: 200px; /* Minimum width before wrapping or shrinking too much */
+}
+
+.form-group > label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block; /* Ensure label takes full width above input */
+}
+
+/* Specific styling for checkbox group */
+.form-group-checkbox {
+  flex-direction: row; /* Align checkbox and its label horizontally */
+  align-items: center; /* Vertically center checkbox and label */
+}
+
+/* Updated selector for higher specificity and added style overrides */
+.options-container .form-group.form-group-checkbox input[type="checkbox"] {
+  width: auto; /* Intrinsic width of the checkbox */
+  display: inline-block; /* Allow it to sit on the same line as the label */
+  padding: 0; /* Remove padding inherited from general input rule */
+  border: none; /* Remove border inherited from general input rule */
+  margin-right: 8px; /* Space between checkbox and label */
+  vertical-align: middle; /* Align with label text */
+}
+
+.form-group-checkbox .checkbox-label {
+  font-weight: normal; 
+  margin-bottom: 0; 
+  vertical-align: middle; /* Align with checkbox */
+}
+
+/* Remove old direct child selectors for inputs/divs if they are no longer needed
+   or ensure they don't conflict. The new .form-group structure should handle this.
+*/
+
+/* Old rule - assess if still needed or if .form-group handles it */
+.options-container > div { 
+  /* display: flex; */ /* Handled by form-group-checkbox now if it was for checkbox */
+  /* align-items: center; */
+  /* gap: 10px; */
+}
+
+/* Old rule - assess if still needed */
 .options-container > div > input[type="checkbox"] {
-  width: auto;
+  /* width: auto; */ /* Handled by .form-group-checkbox input[type="checkbox"] */
 }
 
 .code-ui pre {

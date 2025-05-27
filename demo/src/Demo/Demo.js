@@ -124,68 +124,100 @@ export default MyAppleSigninButton;
           <h2>Props</h2>
           <div className="options-container">
             <h3>Auth options</h3>
-            <label htmlFor="clientId">Client ID:</label>
-            <input
-              type="text"
-              placeholder="clientId"
-              value={authOptions.clientId}
-              onChange={({ target: { value } }) =>
-                setAuthOptions((currVal) => ({ ...currVal, clientId: value }))
-              }
-            />
-            <label htmlFor="scope">Scope:</label>
-            <input
-              type="text"
-              placeholder="scope"
-              value={authOptions.scope}
-              onChange={({ target: { value } }) =>
-                setAuthOptions((currVal) => ({ ...currVal, scope: value }))
-              }
-            />
-            <label htmlFor="redirectURI">
-              redirectURI - MUST NOT have a trailing slash:
-            </label>
-            <input
-              type="text"
-              placeholder="redirectURI"
-              value={authOptions.redirectURI}
-              onChange={({ target: { value } }) =>
-                setAuthOptions((currVal) => ({
-                  ...currVal,
-                  redirectURI: value,
-                }))
-              }
-            />
-            <label htmlFor="redirectURI">State:</label>
-            <input
-              type="text"
-              placeholder="state"
-              value={authOptions.state}
-              onChange={({ target: { value } }) =>
-                setAuthOptions((currVal) => ({ ...currVal, state: value }))
-              }
-            />
-            <label htmlFor="nonce">Nonce:</label>
-            <input
-              type="text"
-              placeholder="nonce"
-              value={authOptions.nonce}
-              onChange={({ target: { value } }) =>
-                setAuthOptions((currVal) => ({ ...currVal, nonce: value }))
-              }
-            />
-            <div>
-              <input
-                type="checkbox"
-                checked={authOptions.usePopup}
-                onChange={({ target: { checked } }) =>
-                  setAuthOptions((currVal) => ({
-                    ...currVal,
-                    usePopup: checked,
-                  }))
-                }
-              />
-              <label htmlFor="use_popup">Use Popup:</label>
+            {/* Row 1: Client ID & Scope */}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="clientId">Client ID:</label>
+                <input
+                  type="text"
+                  id="clientId"
+                  placeholder="clientId"
+                  value={authOptions.clientId}
+                  onChange={({ target: { value } }) =>
+                    setAuthOptions((currVal) => ({
+                      ...currVal,
+                      clientId: value,
+                    }))
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="scope">Scope:</label>
+                <input
+                  type="text"
+                  id="scope"
+                  placeholder="scope"
+                  value={authOptions.scope}
+                  onChange={({ target: { value } }) =>
+                    setAuthOptions((currVal) => ({ ...currVal, scope: value }))
+                  }
+                />
+              </div>
+            </div>
+
+            {/* Row 2: Redirect URI & State */}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="redirectURI">
+                  redirectURI - MUST NOT have a trailing slash:
+                </label>
+                <input
+                  type="text"
+                  id="redirectURI"
+                  placeholder="redirectURI"
+                  value={authOptions.redirectURI}
+                  onChange={({ target: { value } }) =>
+                    setAuthOptions((currVal) => ({
+                      ...currVal,
+                      redirectURI: value,
+                    }))
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="state">State:</label>
+                <input
+                  type="text"
+                  id="state"
+                  placeholder="state"
+                  value={authOptions.state}
+                  onChange={({ target: { value } }) =>
+                    setAuthOptions((currVal) => ({ ...currVal, state: value }))
+                  }
+                />
+              </div>
+            </div>
+
+            {/* Row 3: Nonce & Use Popup */}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="nonce">Nonce:</label>
+                <input
+                  type="text"
+                  id="nonce"
+                  placeholder="nonce"
+                  value={authOptions.nonce}
+                  onChange={({ target: { value } }) =>
+                    setAuthOptions((currVal) => ({ ...currVal, nonce: value }))
+                  }
+                />
+              </div>
+              <div className="form-group form-group-checkbox">
+                <label htmlFor="use_popup" className="checkbox-label">
+                  Use Popup:
+                </label>
+                <input
+                  type="checkbox"
+                  id="use_popup"
+                  checked={authOptions.usePopup}
+                  onChange={({ target: { checked } }) =>
+                    setAuthOptions((currVal) => ({
+                      ...currVal,
+                      usePopup: checked,
+                    }))
+                  }
+                />
+              </div>
             </div>
           </div>
           <div>
