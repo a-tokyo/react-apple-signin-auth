@@ -136,7 +136,15 @@ export default MyAppleSigninButton;
       <div className="container">
         <section>
           <h3>UI:</h3>
-          <AppleSigninButton authOptions={authOptions} {...extraProps} />
+          <div className="ui-buttons-row">
+            <AppleSigninButton authOptions={authOptions} {...extraProps} />
+            <iframe
+              src="https://github.com/sponsors/a-tokyo/button"
+              title="Sponsor a-tokyo"
+              height="32"
+              width="114"
+              style={{ border: 0, borderRadius: '6px' }}></iframe>
+          </div>
           <h3>Code:</h3>
           <div className="code-ui-container">
             <button

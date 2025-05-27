@@ -504,3 +504,11 @@ header .ad-container > iframe {
 }
 
 /* --- End AdSense Ad Container Styles --- */
+
+/* Styles for the row containing UI buttons (Apple Signin, Sponsor) */
+.ui-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
