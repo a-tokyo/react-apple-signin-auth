@@ -204,7 +204,7 @@ export default MyAppleSigninButton;
               </div>
               <div className="form-group form-group-checkbox">
                 <label htmlFor="use_popup" className="checkbox-label">
-                  Use Popup:
+                  Use Popup
                 </label>
                 <input
                   type="checkbox"
@@ -310,7 +310,7 @@ export default MyAppleSigninButton;
                   }
                 />
                 <label htmlFor="noDefaultStyle" className="checkbox-label">
-                  noDefaultStyle:
+                  noDefaultStyle
                 </label>
               </div>
             </div>
