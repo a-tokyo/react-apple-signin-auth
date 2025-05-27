@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import pkgJson from '../../../../package.json';
-import AppleSigninButton from '../AppleSigninButton';
+import AppleSigninButton from '../../../../src/AppleSigninButton/AppleSigninButton.jsx';
 
 import './Demo.css';
 
