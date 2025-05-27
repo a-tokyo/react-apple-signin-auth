@@ -93,11 +93,6 @@ header .ad-container {
   padding: 0;
 }
 
-.options-container > label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
 /* Updated to target inputs within form-group */
 .options-container .form-group > input[type="text"],
 .options-container .form-group > input[type="checkbox"] {
@@ -139,10 +134,6 @@ header .ad-container {
 
 /* Updated selector for higher specificity and added style overrides */
 .options-container .form-group.form-group-checkbox input[type="checkbox"] {
-  width: auto;
-  display: inline-block;
-  padding: 0;
-  border: none;
   margin-right: 8px;
   vertical-align: middle;
 }
@@ -173,12 +164,7 @@ header .ad-container {
 
 /* Ensure checkboxes in theme selector use specific checkbox styling */
 .form-group-theme-selector .theme-option input[type="checkbox"] {
-  width: auto;
-  display: inline-block;
-  padding: 0;
-  border: none;
   margin-right: 5px;
-  vertical-align: middle;
 }
 
 .form-group-theme-selector .theme-option .checkbox-label {
@@ -186,49 +172,6 @@ header .ad-container {
   margin-bottom: 0;
   vertical-align: middle;
 }
-
-/* Remove old UI Props styling that is now handled by form-row/form-group or new specific rules */
-/* Styles for UI Props section to match Auth Options - OLD, review and remove if redundant */
-
-/* OLD - div.container > section:nth-child(2) > div:nth-of-type(2) > div {
-  display: flex;
-  align-items: center;
-  gap: 10px; 
-  margin-bottom: 15px; 
-  flex-wrap: wrap; 
-} */
-
-/* OLD - 
-div.container > section:nth-child(2) > div:nth-of-type(3),
-div.container > section:nth-child(2) > div:nth-of-type(4),
-div.container > section:nth-child(2) > div:nth-of-type(5) {
-  display: flex;
-  align-items: center;
-  gap: 10px; 
-  margin-bottom: 15px; 
-} */
-
-/* OLD - 
-div.container > section:nth-child(2) > div:nth-of-type(3) > input[type="text"],
-div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"] {
-  flex-grow: 1; 
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  min-width: 150px; 
-} */
-
-/* OLD - 
-div.container > section:nth-child(2) > div:nth-of-type(2) > div > input[type="checkbox"],
-div.container > section:nth-child(2) > div:nth-of-type(4) > input[type="checkbox"] {
-  width: auto; 
-  margin-left: 5px; 
-} */
-
-/* OLD - div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
-   margin-bottom: 15px; 
-} */
 
 .code-ui pre {
   max-width: 100%;
@@ -267,6 +210,7 @@ footer {
   border-top: 1px solid #eee;
   font-size: 0.9em;
   color: #777;
+  text-align: center;
 }
 
 footer a {
@@ -486,51 +430,6 @@ header .ad-container > iframe {
 
 /* --- End Extra Props Section Styles --- */
 
-/* OLD Styles - Review and remove if redundant 
-   The following block contains old CSS rules that were specific to the previous structure
-   of the UI Props section. They have been commented out as they are likely superseded
-   by the new .form-row and .form-group based styling.
-*/
-
-/*
-div.container > section:nth-child(2) > div:nth-of-type(2) > div {
-  display: flex;
-  align-items: center;
-  gap: 10px; 
-  margin-bottom: 15px; 
-  flex-wrap: wrap; 
-}
-
-div.container > section:nth-child(2) > div:nth-of-type(3),
-div.container > section:nth-child(2) > div:nth-of-type(4),
-div.container > section:nth-child(2) > div:nth-of-type(5) {
-  display: flex;
-  align-items: center;
-  gap: 10px; 
-  margin-bottom: 15px; 
-}
-
-div.container > section:nth-child(2) > div:nth-of-type(3) > input[type="text"],
-div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"] {
-  flex-grow: 1; 
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  min-width: 150px; 
-}
-
-div.container > section:nth-child(2) > div:nth-of-type(2) > div > input[type="checkbox"],
-div.container > section:nth-child(2) > div:nth-of-type(4) > input[type="checkbox"] {
-  width: auto; 
-  margin-left: 5px; 
-}
-
-div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
-   margin-bottom: 15px; 
-}
-*/
-
 /* Styles for the code UI container and copy button */
 .code-ui-container {
   position: relative;
@@ -605,7 +504,3 @@ header .ad-container > iframe {
 }
 
 /* --- End AdSense Ad Container Styles --- */
-
-footer {
-  text-align: center;
-}
