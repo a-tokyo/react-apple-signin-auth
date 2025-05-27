@@ -1,14 +1,3 @@
-/* Global Box Sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
 .wrapper {
   padding: 20px;
 }
