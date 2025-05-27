@@ -367,6 +367,14 @@ export default MyAppleSigninButton;
         </span>{' '}
         by <a href="https://ahmedtokyo.com">Ahmed Tokyo</a>
         <div>
+          <a
+            href="https://developer.apple.com/sign-in-with-apple/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Official Apple Sign In Docs
+          </a>
+        </div>
+        <div>
           version:
           {pkgJson.version}
         </div>
