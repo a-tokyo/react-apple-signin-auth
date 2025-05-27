@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .wrapper {
   text-align: center;
   padding: 20px;
@@ -62,6 +66,7 @@
   font-weight: bold;
   margin-bottom: 5px;
   display: block; /* Ensure label takes full width above input */
+  text-align: left; /* Explicitly align text to the left */
 }
 
 /* Specific styling for checkbox group */
@@ -86,21 +91,82 @@
   vertical-align: middle; /* Align with checkbox */
 }
 
-/* Remove old direct child selectors for inputs/divs if they are no longer needed
-   or ensure they don't conflict. The new .form-group structure should handle this.
-*/
-
-/* Old rule - assess if still needed or if .form-group handles it */
-.options-container > div { 
-  /* display: flex; */ /* Handled by form-group-checkbox now if it was for checkbox */
-  /* align-items: center; */
-  /* gap: 10px; */
+/* Specific styles for UI Props section elements */
+.ui-props-container .form-group > label {
+  /* Ensures labels in UI Props are also bold if that's the general form-group > label style */
+  /* If they need to be different, this rule can be more specific */
 }
 
-/* Old rule - assess if still needed */
-.options-container > div > input[type="checkbox"] {
-  /* width: auto; */ /* Handled by .form-group-checkbox input[type="checkbox"] */
+.form-group-theme-selector .theme-options {
+  display: flex;
+  gap: 15px; /* Space between Light and Dark options */
+  align-items: center; /* Align items vertically */
+  margin-top: 5px; /* Space below the "Theme:" label */
 }
+
+.form-group-theme-selector .theme-option {
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure checkboxes in theme selector use specific checkbox styling */
+.form-group-theme-selector .theme-option input[type="checkbox"] {
+  width: auto;
+  display: inline-block;
+  padding: 0;
+  border: none;
+  margin-right: 5px; /* Reduced margin for tighter theme options */
+  vertical-align: middle;
+}
+
+.form-group-theme-selector .theme-option .checkbox-label {
+  font-weight: normal;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+/* Remove old UI Props styling that is now handled by form-row/form-group or new specific rules */
+/* Styles for UI Props section to match Auth Options - OLD, review and remove if redundant */
+
+/* OLD - div.container > section:nth-child(2) > div:nth-of-type(2) > div {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 15px; 
+  flex-wrap: wrap; 
+} */
+
+/* OLD - 
+div.container > section:nth-child(2) > div:nth-of-type(3),
+div.container > section:nth-child(2) > div:nth-of-type(4),
+div.container > section:nth-child(2) > div:nth-of-type(5) {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  margin-bottom: 15px; 
+} */
+
+/* OLD - 
+div.container > section:nth-child(2) > div:nth-of-type(3) > input[type="text"],
+div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"] {
+  flex-grow: 1; 
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  min-width: 150px; 
+} */
+
+/* OLD - 
+div.container > section:nth-child(2) > div:nth-of-type(2) > div > input[type="checkbox"],
+div.container > section:nth-child(2) > div:nth-of-type(4) > input[type="checkbox"] {
+  width: auto; 
+  margin-left: 5px; 
+} */
+
+/* OLD - div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
+   margin-bottom: 15px; 
+} */
 
 .code-ui pre {
   max-width: 100%;
@@ -229,3 +295,88 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
   box-sizing: border-box;
   margin: 0 auto; /* Center the iframe if it's narrower than the container */
 }
+
+/* --- Custom Checkbox Styles --- */
+
+/* Hide the default browser checkbox */
+.options-container .form-group.form-group-checkbox input[type="checkbox"],
+.form-group-theme-selector .theme-option input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Style the label to make space and act as a container */
+.options-container .form-group.form-group-checkbox .checkbox-label,
+.form-group-theme-selector .theme-option .checkbox-label {
+  position: relative;
+  padding-left: 28px; /* Space for the custom checkbox */
+  cursor: pointer;
+  display: inline-flex; /* Align pseudo-elements correctly */
+  align-items: center;
+  min-height: 20px; /* Ensure clickable area */
+  line-height: 20px; /* Consistent line height */
+  text-align: left; /* Explicitly align text to the left */
+}
+
+/* The custom checkbox box */
+.options-container .form-group.form-group-checkbox .checkbox-label::before,
+.form-group-theme-selector .theme-option .checkbox-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border: 1px solid #adb5bd; /* Light grey border */
+  background-color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+/* Style on hover */
+.options-container .form-group.form-group-checkbox .checkbox-label:hover::before,
+.form-group-theme-selector .theme-option .checkbox-label:hover::before {
+  border-color: #007aff;
+}
+
+/* Style when checked - box background */
+.options-container .form-group.form-group-checkbox input[type="checkbox"]:checked + .checkbox-label::before,
+.form-group-theme-selector .theme-option input[type="checkbox"]:checked + .checkbox-label::before {
+  background-color: #007aff; /* Apple blue */
+  border-color: #007aff;
+}
+
+/* The checkmark icon (hidden by default) */
+.options-container .form-group.form-group-checkbox .checkbox-label::after,
+.form-group-theme-selector .theme-option .checkbox-label::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-60%) rotate(45deg) scale(0); /* Position and hide */
+  transition: transform 0.15s ease-in-out;
+}
+
+/* Show the checkmark when checked */
+.options-container .form-group.form-group-checkbox input[type="checkbox"]:checked + .checkbox-label::after,
+.form-group-theme-selector .theme-option input[type="checkbox"]:checked + .checkbox-label::after {
+  transform: translateY(-60%) rotate(45deg) scale(1);
+}
+
+/* Focus style for accessibility */
+.options-container .form-group.form-group-checkbox input[type="checkbox"]:focus + .checkbox-label::before,
+.form-group-theme-selector .theme-option input[type="checkbox"]:focus + .checkbox-label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 122, 255, 0.25);
+}
+
+/* --- End Custom Checkbox Styles --- */

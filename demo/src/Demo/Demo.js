@@ -220,71 +220,100 @@ export default MyAppleSigninButton;
               </div>
             </div>
           </div>
-          <div>
+          {/* UI Props Section - Restructured */}
+          <div className="options-container ui-props-container">
             <h3>UI props</h3>
-            <div>
-              Light:
-              <input
-                type="checkbox"
-                checked={extraProps.uiType === 'light'}
-                onChange={() =>
-                  setExtraProps((currVal) => ({
-                    ...currVal,
-                    uiType: 'light',
-                  }))
-                }
-              />
-              Dark:
-              <input
-                type="checkbox"
-                checked={extraProps.uiType === 'dark'}
-                onChange={() =>
-                  setExtraProps((currVal) => ({
-                    ...currVal,
-                    uiType: 'dark',
-                  }))
-                }
-              />
+
+            {/* Row 1: buttonExtraChildren & Theme */}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="buttonExtraChildren">
+                  buttonExtraChildren:
+                </label>
+                <input
+                  type="text"
+                  id="buttonExtraChildren"
+                  value={`${extraProps.buttonExtraChildren}`}
+                  onChange={({ target: { value } }) =>
+                    setExtraProps((currVal) => ({
+                      ...currVal,
+                      buttonExtraChildren: value,
+                    }))
+                  }
+                />
+              </div>
+              <div className="form-group form-group-theme-selector">
+                <label>Theme:</label> {/* General label for the group */}
+                <div className="theme-options">
+                  <div className="theme-option">
+                    <input
+                      type="checkbox"
+                      id="uiTypeLight"
+                      checked={extraProps.uiType === 'light'}
+                      onChange={() =>
+                        setExtraProps((currVal) => ({
+                          ...currVal,
+                          uiType: 'light',
+                        }))
+                      }
+                    />
+                    <label htmlFor="uiTypeLight" className="checkbox-label">
+                      Light
+                    </label>
+                  </div>
+                  <div className="theme-option">
+                    <input
+                      type="checkbox"
+                      id="uiTypeDark"
+                      checked={extraProps.uiType === 'dark'}
+                      onChange={() =>
+                        setExtraProps((currVal) => ({
+                          ...currVal,
+                          uiType: 'dark',
+                        }))
+                      }
+                    />
+                    <label htmlFor="uiTypeDark" className="checkbox-label">
+                      Dark
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            className:
-            <input
-              type="text"
-              value={extraProps.className}
-              onChange={({ target: { value } }) =>
-                setExtraProps((currVal) => ({
-                  ...currVal,
-                  className: value,
-                }))
-              }
-            />
-          </div>
-          <div>
-            noDefaultStyle:
-            <input
-              type="checkbox"
-              checked={extraProps.noDefaultStyle}
-              onChange={({ target: { checked } }) =>
-                setExtraProps((currVal) => ({
-                  ...currVal,
-                  noDefaultStyle: checked,
-                }))
-              }
-            />
-          </div>
-          <div>
-            buttonExtraChildren:
-            <input
-              type="text"
-              value={`${extraProps.buttonExtraChildren}`}
-              onChange={({ target: { value } }) =>
-                setExtraProps((currVal) => ({
-                  ...currVal,
-                  buttonExtraChildren: value,
-                }))
-              }
-            />
+
+            {/* Row 2: className & noDefaultStyle */}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="className">className:</label>
+                <input
+                  type="text"
+                  id="className"
+                  value={extraProps.className}
+                  onChange={({ target: { value } }) =>
+                    setExtraProps((currVal) => ({
+                      ...currVal,
+                      className: value,
+                    }))
+                  }
+                />
+              </div>
+              <div className="form-group form-group-checkbox">
+                <input
+                  type="checkbox"
+                  id="noDefaultStyle"
+                  checked={extraProps.noDefaultStyle}
+                  onChange={({ target: { checked } }) =>
+                    setExtraProps((currVal) => ({
+                      ...currVal,
+                      noDefaultStyle: checked,
+                    }))
+                  }
+                />
+                <label htmlFor="noDefaultStyle" className="checkbox-label">
+                  noDefaultStyle:
+                </label>
+              </div>
+            </div>
           </div>
           <div>
             <h3>Extra props</h3>
