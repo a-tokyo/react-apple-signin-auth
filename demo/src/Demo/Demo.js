@@ -206,7 +206,7 @@ export default MyAppleSigninButton;
             buttonExtraChildren:
             <input
               type="text"
-              value={`"${extraProps.buttonExtraChildren}"`}
+              value={`${extraProps.buttonExtraChildren}`}
               onChange={({ target: { value } }) =>
                 setExtraProps((currVal) => ({
                   ...currVal,
