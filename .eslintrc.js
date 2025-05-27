@@ -23,4 +23,5 @@ module.exports = {
     window: true,
     document: true,
   },
+  ignorePatterns: ['demo'],
 };
