@@ -11,7 +11,6 @@ body {
 
 .wrapper {
   padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 /* Header styles */
@@ -37,6 +36,57 @@ header {
   margin-top: 0;
   color: #555;
   font-size: 1em;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .header-content p {
+    color: #ccc;
+  }
+  
+  h1, h2, h3 {
+    color: #fff;
+  }
+  
+  h3 {
+    color: #ddd;
+  }
+  
+  footer {
+    color: #ccc;
+    border-top: 1px solid #444;
+  }
+  
+  header {
+    border-bottom: 1px solid #444;
+  }
+  
+  .container > section {
+    border: 1px solid #444;
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-group > label {
+    color: #fff;
+  }
+  
+  .options-container .form-group > input[type="text"] {
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+    color: #fff;
+  }
+  
+  .options-container .form-group > input[type="text"]:focus {
+    border-color: #007aff;
+    outline: none;
+  }
+  
+  .extra-props-list span {
+    background-color: #333;
+    color: #ccc;
+    border: 1px solid #555;
+  }
 }
 
 /* Adjust ad container for header placement - it might need less top margin now */
@@ -215,15 +265,6 @@ footer {
   font-size: 0.9em;
   color: #777;
   text-align: center;
-}
-
-footer a {
-  color: #007aff;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
 }
 
 /* Styles for UI Props section to match Auth Options */
@@ -514,4 +555,66 @@ header .ad-container > iframe {
 .ad-container-horizontal {
   max-width: 100%;
   overflow: hidden;
+}
+
+/* === DARK MODE OVERRIDES === */
+/* These styles must be at the end to override all previous styles */
+@media (prefers-color-scheme: dark) {
+  /* Text colors */
+  .header-content p {
+    color: #ccc !important;
+  }
+  
+  h1, h2, h3 {
+    color: #fff !important;
+  }
+  
+  h3 {
+    color: #ddd !important;
+  }
+  
+  footer {
+    color: #ccc !important;
+    border-top: 1px solid #444 !important;
+  }
+  
+  /* Borders and backgrounds */
+  header {
+    border-bottom: 1px solid #444 !important;
+  }
+  
+  .container > section {
+    border: 1px solid #444 !important;
+    background-color: #1a1a1a !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Form elements */
+  .form-group > label {
+    color: #fff !important;
+  }
+  
+  .options-container .form-group > input[type="text"] {
+    background-color: #2a2a2a !important;
+    border: 1px solid #555 !important;
+    color: #fff !important;
+  }
+  
+  .options-container .form-group > input[type="text"]:focus {
+    border-color: #007aff !important;
+    outline: none !important;
+  }
+  
+  /* Extra props tags */
+  .extra-props-list span {
+    background-color: #333 !important;
+    color: #ccc !important;
+    border: 1px solid #555 !important;
+  }
+  
+  /* Checkbox labels */
+  .form-group-checkbox .checkbox-label,
+  .form-group-theme-selector .theme-option .checkbox-label {
+    color: #fff !important;
+  }
 }
