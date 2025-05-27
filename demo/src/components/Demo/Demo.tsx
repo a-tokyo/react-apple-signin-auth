@@ -1,14 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import pkgJson from '../../../package.json';
-import AppleSigninButton from '../../../src';
+import pkgJson from '../../../../package.json';
+import AppleSigninButton from '../../../../src/AppleSigninButton/AppleSigninButton.jsx';
 
 import './Demo.css';
 
+// Declare window.adsbygoogle for TypeScript
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
 // Google AdSense component
-const GoogleAd = ({ format = 'auto', adSlot, className = '' }) => {
+interface GoogleAdProps {
+  format?: string;
+  adSlot: string;
+  className?: string;
+}
+
+const GoogleAd = ({ format = 'auto', adSlot, className = '' }: GoogleAdProps) => {
   useEffect(() => {
     const initializeAd = () => {
       try {
@@ -66,7 +79,7 @@ function Demo() {
     usePopup: true,
   });
   const [extraProps, setExtraProps] = useState({
-    uiType: 'dark',
+    uiType: 'dark' as 'light' | 'dark',
     className: 'apple-auth-btn',
     noDefaultStyle: false,
     buttonExtraChildren: 'Continue with Apple',
@@ -925,29 +938,14 @@ export const verifyAppleToken = async (idToken, user) => {
             </li>
           </ul>
         </section>
-        <GoogleAd adSlot="1999002989" className="ad-container-horizontal" />
       </div>
+      <GoogleAd adSlot="1999002989" className="ad-container-horizontal" />
       <footer>
         Built with{' '}
         <span role="img" aria-label="love">
           ❤️
         </span>{' '}
         by <a href="https://ahmedtokyo.com">Ahmed Tokyo</a>
-        <div>
-          <a
-            href="https://github.com/a-tokyo/react-apple-signin-auth"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ marginRight: '15px' }}>
-            GitHub Repository
-          </a>
-          <a
-            href="https://developer.apple.com/sign-in-with-apple/"
-            target="_blank"
-            rel="noopener noreferrer">
-            Official Apple Sign In Docs
-          </a>
-        </div>
         <div>
           version:
           {pkgJson.version}

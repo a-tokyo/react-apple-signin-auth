@@ -1,17 +1,6 @@
-/* Global Box Sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
 .wrapper {
   padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  max-width: 100vw;
 }
 
 /* Header styles */
@@ -39,6 +28,57 @@ header {
   font-size: 1em;
 }
 
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .header-content p {
+    color: #ccc;
+  }
+  
+  h1, h2, h3 {
+    color: #fff;
+  }
+  
+  h3 {
+    color: #ddd;
+  }
+  
+  footer {
+    color: #ccc;
+    border-top: 1px solid #444;
+  }
+  
+  header {
+    border-bottom: 1px solid #444;
+  }
+  
+  .container > section {
+    border: 1px solid #444;
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-group > label {
+    color: #fff;
+  }
+  
+  .options-container .form-group > input[type="text"] {
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+    color: #fff;
+  }
+  
+  .options-container .form-group > input[type="text"]:focus {
+    border-color: #007aff;
+    outline: none;
+  }
+  
+  .extra-props-list span {
+    background-color: #333;
+    color: #ccc;
+    border: 1px solid #555;
+  }
+}
+
 /* Adjust ad container for header placement - it might need less top margin now */
 header .ad-container {
   margin: 0;
@@ -48,7 +88,6 @@ header .ad-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90px;
   /* background-color: #f0f0f0; For testing visibility */
   /* min-height: 60px; For testing visibility */
 }
@@ -71,7 +110,6 @@ header .ad-container {
     margin: 0;
     width: 100%;
     flex-basis: auto;
-    height: 90px;
     /* min-height: 50px; For testing visibility on mobile */
   }
 }
@@ -217,15 +255,6 @@ footer {
   text-align: center;
 }
 
-footer a {
-  color: #007aff;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
 /* Styles for UI Props section to match Auth Options */
 
 /* Container for the "UI props" heading and its first group of controls (theme selection) */
@@ -274,21 +303,6 @@ div.container > section:nth-child(2) > div:nth-of-type(4) > input[type="checkbox
 /* For instance, to ensure consistent spacing above the first control: */
 div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
    margin-bottom: 15px;
-}
-
-/* Target the ins tag specifically within the header ad container */
-header .ad-container ins.adsbygoogle {
-  display: block;
-  max-width: 100%;
-  /* background-color: lightcoral; For debugging visibility */
-}
-
-/* Target any iframe Google might inject within the header ad container or ins tag */
-header .ad-container ins.adsbygoogle iframe,
-header .ad-container > iframe {
-  display: block;
-  max-width: 100% !important;
-  margin: 0 auto; 
 }
 
 /* Styles for the code UI container and copy button */
@@ -470,7 +484,6 @@ header .ad-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90px;
   /* background-color: #f0f0f0; For testing visibility */
   /* min-height: 60px; For testing visibility */
 }
@@ -481,24 +494,8 @@ header .ad-container {
     margin: 0;
     width: 100%;
     flex-basis: auto;
-    height: 90px;
     /* min-height: 50px; For testing visibility on mobile */
   }
-}
-
-/* Target the ins tag specifically within the header ad container */
-header .ad-container ins.adsbygoogle {
-  display: block;
-  max-width: 100%;
-  /* background-color: lightcoral; For debugging visibility */
-}
-
-/* Target any iframe Google might inject within the header ad container or ins tag */
-header .ad-container ins.adsbygoogle iframe,
-header .ad-container > iframe {
-  display: block;
-  max-width: 100% !important;
-  margin: 0 auto; 
 }
 
 /* --- End AdSense Ad Container Styles --- */
@@ -514,4 +511,66 @@ header .ad-container > iframe {
 .ad-container-horizontal {
   max-width: 100%;
   overflow: hidden;
+}
+
+/* === DARK MODE OVERRIDES === */
+/* These styles must be at the end to override all previous styles */
+@media (prefers-color-scheme: dark) {
+  /* Text colors */
+  .header-content p {
+    color: #ccc !important;
+  }
+  
+  h1, h2, h3 {
+    color: #fff !important;
+  }
+  
+  h3 {
+    color: #ddd !important;
+  }
+  
+  footer {
+    color: #ccc !important;
+    border-top: 1px solid #444 !important;
+  }
+  
+  /* Borders and backgrounds */
+  header {
+    border-bottom: 1px solid #444 !important;
+  }
+  
+  .container > section {
+    border: 1px solid #444 !important;
+    background-color: #1a1a1a !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Form elements */
+  .form-group > label {
+    color: #fff !important;
+  }
+  
+  .options-container .form-group > input[type="text"] {
+    background-color: #2a2a2a !important;
+    border: 1px solid #555 !important;
+    color: #fff !important;
+  }
+  
+  .options-container .form-group > input[type="text"]:focus {
+    border-color: #007aff !important;
+    outline: none !important;
+  }
+  
+  /* Extra props tags */
+  .extra-props-list span {
+    background-color: #333 !important;
+    color: #ccc !important;
+    border: 1px solid #555 !important;
+  }
+  
+  /* Checkbox labels */
+  .form-group-checkbox .checkbox-label,
+  .form-group-theme-selector .theme-option .checkbox-label {
+    color: #fff !important;
+  }
 }

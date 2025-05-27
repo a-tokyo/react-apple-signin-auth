@@ -21,12 +21,13 @@
     "url": "https://github.com/a-tokyo/react-apple-signin-auth/issues"
   },
   "scripts": {
-    "start": "webpack serve --mode development",
+    "start": "cd demo && npm run dev",
     "transpile": "rm -rf dist && tsc && babel src -d dist --copy-files && rm -rf dist/**/__snapshots__ && find ./dist -name '*.test.js*' -type f -delete ",
     "prepublishOnly": "npm run transpile",
-    "build": "webpack --mode production",
+    "build": "cd demo && npm run build && cd ..",
     "deploy": "gh-pages -d demo/dist",
     "publish-demo": "npm run build && npm run deploy",
+    "postinstall": "cd demo && npm install && cd ..",
     "test": "jest"
   },
   "peerDependencies": {
@@ -43,7 +44,6 @@
     "@testing-library/react-hooks": "^7.0.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "copy-webpack-plugin": "^9.1.0",
     "css-loader": "^6.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
@@ -59,7 +59,6 @@
     "eslint-plugin-react-native": "^3.11.0",
     "flow-bin": "^0.156.0",
     "gh-pages": "^3.2.3",
-    "html-webpack-plugin": "^5.3.2",
     "husky": "^4.3.0",
     "jest": "^27.0.6",
     "jest-cli": "^27.0.6",
@@ -73,10 +72,7 @@
     "react-test-renderer": "^17.0.2",
     "regenerator-runtime": "^0.13.9",
     "style-loader": "^3.2.1",
-    "typescript": "^5.2.2",
-    "webpack": "^5.46.0",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "typescript": "^5.2.2"
   },
   "husky": {
     "hooks": {
@@ -84,7 +80,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,jsx}": [
       "prettier --write",
       "git add"
     ]

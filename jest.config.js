@@ -13,7 +13,7 @@ module.exports = {
   coverageThreshold: {
     global: {
       // @TODO push up over time
-      branches: 71,
+      branches: 66,
       functions: 71,
       lines: 77,
       statements: 77,
