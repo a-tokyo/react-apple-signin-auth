@@ -1,35 +1,181 @@
 .wrapper {
   text-align: center;
-  /* max-width: 100%; */
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 10px;
+  padding: 20px 0;
+  gap: 20px;
 }
-.container>* {
-  flex: 1;
+
+.container > section {
+  flex: 1 1 400px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 0;
 }
 
 .options-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10px;
+  gap: 15px;
+  padding: 0;
 }
 
-.options-container>input {
+.options-container > label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.options-container > input[type="text"],
+.options-container > input[type="checkbox"] {
   display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.options-container > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.options-container > div > input[type="checkbox"] {
+  width: auto;
 }
 
 .code-ui pre {
-  max-width: calc(100vw - 60px);
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-@media only screen and (min-width: 768px) {
-  .container {
-    padding: 10px 40px;
-  }
+h1, h2, h3 {
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: #555;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  font-size: 0.9em;
+  color: #777;
+}
+
+footer a {
+  color: #007aff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for UI Props section to match Auth Options */
+
+/* Container for the "UI props" heading and its first group of controls (theme selection) */
+/* The heading itself is styled by the generic h3 rule */
+
+/* Row for theme selection checkboxes */
+div.container > section:nth-child(2) > div:nth-of-type(2) > div {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between "Light:", input, "Dark:", input */
+  margin-bottom: 15px; /* Space below this row */
+  flex-wrap: wrap; /* Allow wrapping if space is tight */
+}
+
+/* Rows for other UI Props (className, noDefaultStyle, buttonExtraChildren) */
+/* These are direct div children of the second section, after the div containing "h3 UI Props" */
+div.container > section:nth-child(2) > div:nth-of-type(3),
+div.container > section:nth-child(2) > div:nth-of-type(4),
+div.container > section:nth-child(2) > div:nth-of-type(5) {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between the label-like text and the input */
+  margin-bottom: 15px; /* Space below each row */
+}
+
+/* Text inputs within the UI Props section */
+div.container > section:nth-child(2) > div:nth-of-type(3) > input[type="text"], /* className input */
+div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"]  /* buttonExtraChildren input */ {
+  flex-grow: 1; /* Allow input to take up available space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  min-width: 150px; /* Prevent input from becoming too small */
+}
+
+/* Checkboxes within the UI Props section */
+/* Theme selection checkboxes */
+div.container > section:nth-child(2) > div:nth-of-type(2) > div > input[type="checkbox"],
+/* noDefaultStyle checkbox */
+div.container > section:nth-child(2) > div:nth-of-type(4) > input[type="checkbox"] {
+  width: auto; /* Use natural width for checkboxes */
+  margin-left: 5px; /* Add a small margin for spacing after text */
+}
+
+/* Adjust spacing for the h3 "UI props" if needed, though existing h3 style might be sufficient */
+/* For instance, to ensure consistent spacing above the first control: */
+div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
+   margin-bottom: 15px; /* Ensure space before the theme selector */
+}
+
+/* AdSense Ad Container Styles */
+/* Moved to the bottom for better organization */
+.ad-container {
+  display: block;
+  margin: 20px 0 0;
+  background-color: #f9f9f9;
+  overflow: hidden; /* Key to clip oversized ad content */
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Target the ins tag specifically within the ad container */
+.ad-container ins.adsbygoogle {
+  display: block; /* Reinforce block display */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Target any iframe Google might inject within the ad container or ins tag */
+.ad-container ins.adsbygoogle iframe,
+.ad-container > iframe { /* If iframe is a direct child of .ad-container */
+  display: block; /* Ensure iframe behaves like a block */
+  max-width: 100% !important; /* Attempt to override inline widths on iframe */
+  box-sizing: border-box;
+  margin: 0 auto; /* Center the iframe if it's narrower than the container */
 }

@@ -7,6 +7,45 @@ import AppleSigninButton from '../../../src';
 
 import './Demo.css';
 
+// Google AdSense component
+const GoogleAd = () => {
+  useEffect(() => {
+    // Load AdSense script if not already loaded
+    if (!window.adsbygoogle) {
+      const script = document.createElement('script');
+      script.src =
+        'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5266987079964279';
+      script.async = true;
+      script.crossOrigin = 'anonymous';
+      document.head.appendChild(script);
+    }
+
+    // Initialize ad after script loads
+    const timer = setTimeout(() => {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error('AdSense error:', e);
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <div className="ad-container">
+      <ins
+        className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client="ca-pub-5266987079964279"
+        data-ad-slot="8959679920"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </div>
+  );
+};
+
 function Demo() {
   const [authOptions, setAuthOptions] = useState({
     clientId: 'com.example.web',
@@ -218,13 +257,14 @@ export default MyAppleSigninButton;
           <div>
             <h3>Extra props</h3>
             <div>
-              <div>onSuccess</div>
-              <div>onError</div>
-              <div>skipScript</div>
-              <div>iconProps</div>
-              <div>render</div>
+              <span>onSuccess</span>
+              <span>onError</span>
+              <span>skipScript</span>
+              <span>iconProps</span>
+              <span>render</span>
             </div>
           </div>
+          <GoogleAd />
         </section>
       </div>
       <footer>
