@@ -62,6 +62,7 @@ function Demo() {
     buttonExtraChildren: 'Continue with Apple',
   });
   const [codeString, setCodeString] = useState('');
+  const [copyButtonText, setCopyButtonText] = useState('Copy Code');
 
   /** Update code string */
   useEffect(() => {
@@ -103,6 +104,29 @@ export default MyAppleSigninButton;
 `);
   }, [authOptions, extraProps]);
 
+  // Function to copy code to clipboard
+  const handleCopyCode = async () => {
+    if (!navigator.clipboard) {
+      // Fallback for older browsers or insecure contexts (http)
+      // You could implement a textarea-based copy method here if needed
+      alert('Clipboard API not available. Please copy manually.');
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(codeString);
+      setCopyButtonText('Copied!');
+      setTimeout(() => {
+        setCopyButtonText('Copy Code');
+      }, 2000); // Reset after 2 seconds
+    } catch (err) {
+      console.error('Failed to copy code: ', err);
+      setCopyButtonText('Failed to copy');
+      setTimeout(() => {
+        setCopyButtonText('Copy Code');
+      }, 2000);
+    }
+  };
+
   return (
     <article className="wrapper">
       <header>
@@ -114,10 +138,18 @@ export default MyAppleSigninButton;
           <h3>UI:</h3>
           <AppleSigninButton authOptions={authOptions} {...extraProps} />
           <h3>Code:</h3>
-          <div className="code-ui">
-            <SyntaxHighlighter language="javascript" style={atomDark}>
-              {codeString}
-            </SyntaxHighlighter>
+          <div className="code-ui-container">
+            <button
+              type="button"
+              onClick={handleCopyCode}
+              className="copy-code-button">
+              {copyButtonText}
+            </button>
+            <div className="code-ui">
+              <SyntaxHighlighter language="javascript" style={atomDark}>
+                {codeString}
+              </SyntaxHighlighter>
+            </div>
           </div>
         </section>
         <section>

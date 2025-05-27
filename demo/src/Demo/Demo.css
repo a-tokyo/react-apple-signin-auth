@@ -480,3 +480,32 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
   box-sizing: border-box;
   margin: 0 auto; /* Center the iframe if it's narrower than the container */
 }
+
+/* Styles for the code UI container and copy button */
+.code-ui-container {
+  position: relative; /* For absolute positioning of the button */
+  margin-top: 10px; /* Space above the container */
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10; /* Ensure it's above the SyntaxHighlighter */
+  padding: 6px 12px;
+  background-color: #555; /* Darker grey, blends with atomDark theme */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  transition: background-color 0.2s ease;
+}
+
+.copy-code-button:hover {
+  background-color: #666;
+}
+
+.copy-code-button:active {
+  background-color: #444;
+}
