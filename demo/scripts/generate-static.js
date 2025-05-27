@@ -49,7 +49,32 @@ async function generateStaticSite() {
   console.log('🚀 Starting static site generation...');
 
   const { server, port } = await startLocalServer(distPath);
-  const browser = await puppeteer.launch({ headless: true });
+
+  // Configure Puppeteer for CI environments
+  const isCI =
+    process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
+  const launchOptions = {
+    headless: true,
+    ...(isCI && {
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--no-first-run',
+        '--no-zygote',
+        '--single-process',
+        '--disable-gpu',
+      ],
+    }),
+  };
+
+  console.log(
+    `🔧 Launching browser with options:`,
+    JSON.stringify(launchOptions, null, 2),
+  );
+
+  const browser = await puppeteer.launch(launchOptions);
   const page = await browser.newPage();
 
   try {
@@ -58,6 +83,8 @@ async function generateStaticSite() {
       waitUntil: 'networkidle0',
       timeout: 30000,
     });
+
+    console.log('📄 Page loaded, waiting for React to render...');
 
     // Wait for React to render and syntax highlighting to load
     await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -72,6 +99,7 @@ async function generateStaticSite() {
     console.log(`📁 Output: ${indexPath}`);
   } catch (error) {
     console.error('❌ Error generating static site:', error);
+    console.error('Stack trace:', error.stack);
     process.exit(1);
   } finally {
     await browser.close();

@@ -24,6 +24,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install
         run: yarn install
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
       - name: Test
         run: yarn test --ci --bail
       - name: Build
@@ -52,6 +54,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install
         run: yarn install
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
       - name: Build
         run: NODE_ENV=production yarn build
       - name: Setup env vars
