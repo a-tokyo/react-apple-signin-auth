@@ -947,21 +947,6 @@ export const verifyAppleToken = async (idToken, user) => {
         </span>{' '}
         by <a href="https://ahmedtokyo.com">Ahmed Tokyo</a>
         <div>
-          <a
-            href="https://github.com/a-tokyo/react-apple-signin-auth"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ marginRight: '15px' }}>
-            GitHub Repository
-          </a>
-          <a
-            href="https://developer.apple.com/sign-in-with-apple/"
-            target="_blank"
-            rel="noopener noreferrer">
-            Official Apple Sign In Docs
-          </a>
-        </div>
-        <div>
           version:
           {pkgJson.version}
         </div>
