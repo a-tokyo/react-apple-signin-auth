@@ -51,7 +51,7 @@ const MyAppleSigninButton = ({ ...rest }) => (
         : ''
     }${
       extraProps.buttonExtraChildren
-        ? `\n    /** Allows to change the button's children, eg: for changing the button text */\n    buttonExtraChildren=${extraProps.buttonExtraChildren}`
+        ? `\n    /** Allows to change the button's children, eg: for changing the button text */\n    buttonExtraChildren="${extraProps.buttonExtraChildren}"`
         : ''
     }
     /** Checkout README.md for further customization props. */
