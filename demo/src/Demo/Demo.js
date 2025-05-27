@@ -498,37 +498,239 @@ export default MyAppleSigninButton;
             </li>
           </ul>
 
-          <h3>Technical Implementation: React Apple Sign In Integration</h3>
+          <h3>Complete Implementation Guide: From Setup to Production</h3>
           <p>
-            Our react-apple-signin-auth library simplifies the complex process
-            of integrating Apple Sign In into React applications. With just a
-            few lines of code, you can implement a production-ready Apple Sign
-            In button that handles all the authentication complexities.
+            Integrating Apple Sign In involves several steps across different
+            platforms. This comprehensive guide covers everything from Apple
+            Developer account setup to frontend and backend implementation using
+            our react-apple-signin-auth library.
+          </p>
+
+          <h4>Prerequisites and Development Setup</h4>
+          <p>
+            Before implementing Apple Sign In, you&apos;ll need an active Apple
+            Developer Program membership ($99/year) and a few development tools
+            for local testing.
           </p>
           <ul>
             <li>
-              <strong>Easy integration:</strong> Minimal code required for full
-              functionality
+              <strong>Apple Developer Program:</strong> Required for creating
+              App IDs and Service IDs
             </li>
             <li>
-              <strong>TypeScript support:</strong> Full type safety and
-              IntelliSense
+              <strong>ngrok or similar tool:</strong> Apple Sign In requires
+              HTTPS domains, even for local development
             </li>
             <li>
-              <strong>Customizable UI:</strong> Dark/light themes and custom
-              styling options
+              <strong>Static domain:</strong> Create a static ngrok domain to
+              avoid reconfiguring Apple credentials during development
+            </li>
+          </ul>
+
+          <h4>Setting Up ngrok for Local Development</h4>
+          <p>
+            Apple Sign In doesn&apos;t support HTTP domains, so you&apos;ll need
+            to expose your local development server via HTTPS. ngrok is the most
+            popular solution for this:
+          </p>
+          <ol>
+            <li>Install ngrok from their official website</li>
+            <li>Create a static domain in your ngrok dashboard</li>
+            <li>
+              Run:{' '}
+              <code>ngrok http 3000 --domain your-static-domain.ngrok.io</code>
             </li>
             <li>
-              <strong>Popup and redirect modes:</strong> Flexible authentication
-              flows
+              Access your app at{' '}
+              <code>https://your-static-domain.ngrok.io</code>
+            </li>
+          </ol>
+
+          <h4>Apple Developer Account Configuration</h4>
+          <p>
+            You&apos;ll need to create both an App ID and Service ID in your
+            Apple Developer account:
+          </p>
+
+          <strong>Creating an App ID:</strong>
+          <ol>
+            <li>Sign in to Apple Developer Console</li>
+            <li>
+              Navigate to &quot;Certificates, Identifiers &amp; Profiles&quot;
             </li>
             <li>
-              <strong>Error handling:</strong> Comprehensive error management
-              and logging
+              Under &quot;Identifiers,&quot; click the &quot;+&quot; button
+            </li>
+            <li>Choose &quot;App IDs&quot; and click &quot;Continue&quot;</li>
+            <li>
+              Enter description and bundle ID (e.g., com.yourcompany.yourapp)
+            </li>
+            <li>Enable &quot;Sign In with Apple&quot; capability</li>
+          </ol>
+
+          <strong>Creating a Service ID:</strong>
+          <ol>
+            <li>
+              Again in &quot;Identifiers,&quot; click &quot;+&quot; and choose
+              &quot;Services IDs&quot;
+            </li>
+            <li>Fill in identifier and description</li>
+            <li>Enable &quot;Sign In with Apple&quot;</li>
+            <li>Configure domains (add your ngrok domain for development)</li>
+            <li>Set redirect URLs (your frontend URL for popup mode)</li>
+          </ol>
+
+          <h4>Frontend Implementation with React</h4>
+          <p>Install and configure the react-apple-signin-auth package:</p>
+          <pre
+            style={{
+              background: '#2d2d2d',
+              color: '#f8f8f2',
+              padding: '1rem',
+              borderRadius: '4px',
+              overflow: 'auto',
+            }}>
+            {`npm install react-apple-signin-auth
+
+// AppleSignIn.js
+import AppleSigninButton from 'react-apple-signin-auth';
+
+function AppleSignIn() {
+  const handleSuccess = (data) => {
+    const { authorization, user } = data;
+    // Send data to your backend for verification
+    console.log('Apple Sign In Success:', data);
+  };
+
+  const authOptions = {
+    clientId: 'your.service.id', // Your Service ID
+    scope: 'email name',
+    redirectURI: 'https://your-domain.com',
+    nonce: 'nonce',
+    usePopup: true, // Recommended for single-page apps
+  };
+
+  return (
+    <AppleSigninButton
+      authOptions={authOptions}
+      uiType="dark"
+      className="apple-auth-btn"
+      onSuccess={handleSuccess}
+      onError={(error) => console.error(error)}
+    />
+  );
+}`}
+          </pre>
+
+          <h4>Understanding the Apple Response</h4>
+          <p>
+            Apple&apos;s response structure varies between first-time and
+            returning users:
+          </p>
+          <pre
+            style={{
+              background: '#2d2d2d',
+              color: '#f8f8f2',
+              padding: '1rem',
+              borderRadius: '4px',
+              overflow: 'auto',
+            }}>
+            {`// First-time user response
+{
+  "authorization": {
+    "state": "state",
+    "code": "single-use-auth-code",
+    "id_token": "JWT-token-to-verify"
+  },
+  "user": {
+    "email": "user@email.com",
+    "name": {
+      "firstName": "John",
+      "lastName": "Doe"
+    }
+  }
+}
+
+// Returning user response (user object omitted)
+{
+  "authorization": {
+    "state": "state",
+    "code": "single-use-auth-code", 
+    "id_token": "JWT-token-to-verify"
+  }
+}`}
+          </pre>
+
+          <h4>Backend Verification and User Management</h4>
+          <p>
+            Verify the ID token on your backend using the apple-signin-auth
+            package:
+          </p>
+          <pre
+            style={{
+              background: '#2d2d2d',
+              color: '#f8f8f2',
+              padding: '1rem',
+              borderRadius: '4px',
+              overflow: 'auto',
+            }}>
+            {`npm install apple-signin-auth
+
+// backend/auth.js
+import appleSignin from 'apple-signin-auth';
+
+export const verifyAppleToken = async (idToken, user) => {
+  try {
+    const { sub, email, iss } = await appleSignin.verifyIdToken(idToken, {
+      audience: 'your.service.id', // Your Service ID
+      ignoreExpiration: false,
+    });
+
+    // sub = unique user identifier
+    // email = user's email
+    // iss = issuer (https://appleid.apple.com)
+
+    // Check if user exists in database
+    let existingUser = await findUserBySub(sub);
+    
+    if (!existingUser && user) {
+      // First-time user - save profile information
+      existingUser = await createUser({
+        appleId: sub,
+        email: email,
+        firstName: user.name?.firstName,
+        lastName: user.name?.lastName,
+      });
+    }
+
+    return existingUser;
+  } catch (error) {
+    throw new Error('Invalid Apple ID token');
+  }
+};`}
+          </pre>
+
+          <h4>Production Deployment Considerations</h4>
+          <ul>
+            <li>
+              <strong>Domain verification:</strong> Update Apple Service ID
+              configuration with production domains
             </li>
             <li>
-              <strong>Production ready:</strong> Battle-tested in thousands of
-              applications
+              <strong>HTTPS requirement:</strong> Ensure all domains use valid
+              SSL certificates
+            </li>
+            <li>
+              <strong>User data storage:</strong> Apple only sends user details
+              on first sign-in - store them immediately
+            </li>
+            <li>
+              <strong>Token expiration:</strong> Implement proper token refresh
+              mechanisms
+            </li>
+            <li>
+              <strong>Error handling:</strong> Handle network failures and
+              invalid tokens gracefully
             </li>
           </ul>
 
@@ -592,38 +794,46 @@ export default MyAppleSigninButton;
             </li>
           </ul>
 
-          <h3>Getting Started: Implementation Best Practices</h3>
+          <h3>Best Practices and Optimization Tips</h3>
           <p>
-            Ready to implement Apple Sign In in your React application? Follow
-            these best practices to ensure a smooth integration and optimal user
-            experience.
+            Follow these proven strategies to maximize the effectiveness of your
+            Apple Sign In implementation and achieve the highest conversion
+            rates.
           </p>
-          <ol>
+          <ul>
             <li>
-              <strong>Configure Apple Developer Account:</strong> Set up your
-              Apple ID and app configuration
+              <strong>Button placement:</strong> Position Apple Sign In
+              prominently above other login options
             </li>
             <li>
-              <strong>Install react-apple-signin-auth:</strong> Add our library
-              to your project dependencies
+              <strong>Visual consistency:</strong> Use Apple&apos;s official
+              design guidelines and maintain brand consistency
             </li>
             <li>
-              <strong>Implement the button:</strong> Use our customizable Apple
-              Sign In component
+              <strong>Error handling:</strong> Provide clear, helpful error
+              messages for authentication failures
             </li>
             <li>
-              <strong>Handle authentication:</strong> Process user data and
-              manage sessions
+              <strong>Performance optimization:</strong> Lazy load the Apple SDK
+              to improve initial page load times
             </li>
             <li>
-              <strong>Test thoroughly:</strong> Verify functionality across all
-              Apple devices
+              <strong>Analytics tracking:</strong> Monitor conversion rates,
+              drop-off points, and user behavior patterns
             </li>
             <li>
-              <strong>Monitor analytics:</strong> Track conversion improvements
-              and user behavior
+              <strong>A/B testing:</strong> Test different button styles, copy,
+              and placement to optimize conversions
             </li>
-          </ol>
+            <li>
+              <strong>Fallback options:</strong> Always provide alternative
+              login methods for users without Apple devices
+            </li>
+            <li>
+              <strong>Privacy messaging:</strong> Clearly communicate your
+              app&apos;s privacy practices to build trust
+            </li>
+          </ul>
 
           <p>
             <strong>References and Further Reading:</strong>
