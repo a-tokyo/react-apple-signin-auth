@@ -938,8 +938,8 @@ export const verifyAppleToken = async (idToken, user) => {
             </li>
           </ul>
         </section>
-        <GoogleAd adSlot="1999002989" className="ad-container-horizontal" />
       </div>
+      <GoogleAd adSlot="1999002989" className="ad-container-horizontal" />
       <footer>
         Built with{' '}
         <span role="img" aria-label="love">

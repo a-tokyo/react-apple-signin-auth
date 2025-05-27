@@ -1,5 +1,6 @@
 .wrapper {
   padding: 20px;
+  max-width: 100vw;
 }
 
 /* Header styles */
@@ -87,7 +88,6 @@ header .ad-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90px;
   /* background-color: #f0f0f0; For testing visibility */
   /* min-height: 60px; For testing visibility */
 }
@@ -110,7 +110,6 @@ header .ad-container {
     margin: 0;
     width: 100%;
     flex-basis: auto;
-    height: 90px;
     /* min-height: 50px; For testing visibility on mobile */
   }
 }
@@ -306,21 +305,6 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
    margin-bottom: 15px;
 }
 
-/* Target the ins tag specifically within the header ad container */
-header .ad-container ins.adsbygoogle {
-  display: block;
-  max-width: 100%;
-  /* background-color: lightcoral; For debugging visibility */
-}
-
-/* Target any iframe Google might inject within the header ad container or ins tag */
-header .ad-container ins.adsbygoogle iframe,
-header .ad-container > iframe {
-  display: block;
-  max-width: 100% !important;
-  margin: 0 auto; 
-}
-
 /* Styles for the code UI container and copy button */
 .code-ui-container {
   position: relative;
@@ -500,7 +484,6 @@ header .ad-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90px;
   /* background-color: #f0f0f0; For testing visibility */
   /* min-height: 60px; For testing visibility */
 }
@@ -511,24 +494,8 @@ header .ad-container {
     margin: 0;
     width: 100%;
     flex-basis: auto;
-    height: 90px;
     /* min-height: 50px; For testing visibility on mobile */
   }
-}
-
-/* Target the ins tag specifically within the header ad container */
-header .ad-container ins.adsbygoogle {
-  display: block;
-  max-width: 100%;
-  /* background-color: lightcoral; For debugging visibility */
-}
-
-/* Target any iframe Google might inject within the header ad container or ins tag */
-header .ad-container ins.adsbygoogle iframe,
-header .ad-container > iframe {
-  display: block;
-  max-width: 100% !important;
-  margin: 0 auto; 
 }
 
 /* --- End AdSense Ad Container Styles --- */
