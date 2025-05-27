@@ -3,9 +3,71 @@ body {
 }
 
 .wrapper {
-  text-align: center;
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Header styles */
+header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.header-content {
+  text-align: left;
+  flex-basis: calc(50% - 10px);
+}
+
+.header-content h1 {
+  margin-bottom: 0.2em;
+}
+
+.header-content p {
+  margin-top: 0;
+  color: #555;
+  font-size: 1em;
+}
+
+/* Adjust ad container for header placement - it might need less top margin now */
+header .ad-container {
+  margin: 0;
+  flex-shrink: 0;
+  flex-basis: calc(50% - 10px);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  /* background-color: #f0f0f0; For testing visibility */
+  /* min-height: 60px; For testing visibility */
+}
+
+/* Responsive header layout */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .header-content {
+    margin-bottom: 0;
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  header .ad-container {
+    margin: 0;
+    width: 100%;
+    flex-basis: auto;
+    height: 90px;
+    /* min-height: 50px; For testing visibility on mobile */
+  }
 }
 
 .container {
@@ -50,45 +112,45 @@ body {
 /* Styles for new form layout */
 .form-row {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping on very small screens if needed */
-  gap: 20px; /* Space between form groups in a row */
-  margin-bottom: 15px; /* Space below each row */
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 15px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  flex: 1; /* Allow groups to share space equally */
-  min-width: 200px; /* Minimum width before wrapping or shrinking too much */
+  flex: 1;
+  min-width: 200px;
 }
 
 .form-group > label {
   font-weight: bold;
   margin-bottom: 5px;
-  display: block; /* Ensure label takes full width above input */
-  text-align: left; /* Explicitly align text to the left */
+  display: block;
+  text-align: left;
 }
 
 /* Specific styling for checkbox group */
 .form-group-checkbox {
-  flex-direction: row; /* Align checkbox and its label horizontally */
-  align-items: center; /* Vertically center checkbox and label */
+  flex-direction: row;
+  align-items: center;
 }
 
 /* Updated selector for higher specificity and added style overrides */
 .options-container .form-group.form-group-checkbox input[type="checkbox"] {
-  width: auto; /* Intrinsic width of the checkbox */
-  display: inline-block; /* Allow it to sit on the same line as the label */
-  padding: 0; /* Remove padding inherited from general input rule */
-  border: none; /* Remove border inherited from general input rule */
-  margin-right: 8px; /* Space between checkbox and label */
-  vertical-align: middle; /* Align with label text */
+  width: auto;
+  display: inline-block;
+  padding: 0;
+  border: none;
+  margin-right: 8px;
+  vertical-align: middle;
 }
 
 .form-group-checkbox .checkbox-label {
-  font-weight: normal; 
-  margin-bottom: 0; 
-  vertical-align: middle; /* Align with checkbox */
+  font-weight: normal;
+  margin-bottom: 0;
+  vertical-align: middle;
 }
 
 /* Specific styles for UI Props section elements */
@@ -99,9 +161,9 @@ body {
 
 .form-group-theme-selector .theme-options {
   display: flex;
-  gap: 15px; /* Space between Light and Dark options */
-  align-items: center; /* Align items vertically */
-  margin-top: 5px; /* Space below the "Theme:" label */
+  gap: 15px;
+  align-items: center;
+  margin-top: 5px;
 }
 
 .form-group-theme-selector .theme-option {
@@ -115,7 +177,7 @@ body {
   display: inline-block;
   padding: 0;
   border: none;
-  margin-right: 5px; /* Reduced margin for tighter theme options */
+  margin-right: 5px;
   vertical-align: middle;
 }
 
@@ -225,9 +287,9 @@ footer a:hover {
 div.container > section:nth-child(2) > div:nth-of-type(2) > div {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between "Light:", input, "Dark:", input */
-  margin-bottom: 15px; /* Space below this row */
-  flex-wrap: wrap; /* Allow wrapping if space is tight */
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
 }
 
 /* Rows for other UI Props (className, noDefaultStyle, buttonExtraChildren) */
@@ -237,19 +299,19 @@ div.container > section:nth-child(2) > div:nth-of-type(4),
 div.container > section:nth-child(2) > div:nth-of-type(5) {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between the label-like text and the input */
-  margin-bottom: 15px; /* Space below each row */
+  gap: 10px;
+  margin-bottom: 15px;
 }
 
 /* Text inputs within the UI Props section */
-div.container > section:nth-child(2) > div:nth-of-type(3) > input[type="text"], /* className input */
-div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"]  /* buttonExtraChildren input */ {
-  flex-grow: 1; /* Allow input to take up available space */
+div.container > section:nth-child(2) > div:nth-of-type(3) > input[type="text"],
+div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"] {
+  flex-grow: 1;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  min-width: 150px; /* Prevent input from becoming too small */
+  min-width: 150px;
 }
 
 /* Checkboxes within the UI Props section */
@@ -257,43 +319,60 @@ div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"]  
 div.container > section:nth-child(2) > div:nth-of-type(2) > div > input[type="checkbox"],
 /* noDefaultStyle checkbox */
 div.container > section:nth-child(2) > div:nth-of-type(4) > input[type="checkbox"] {
-  width: auto; /* Use natural width for checkboxes */
-  margin-left: 5px; /* Add a small margin for spacing after text */
+  width: auto;
+  margin-left: 5px;
 }
 
 /* Adjust spacing for the h3 "UI props" if needed, though existing h3 style might be sufficient */
 /* For instance, to ensure consistent spacing above the first control: */
 div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
-   margin-bottom: 15px; /* Ensure space before the theme selector */
+   margin-bottom: 15px;
 }
 
-/* AdSense Ad Container Styles */
-/* Moved to the bottom for better organization */
-.ad-container {
+/* Target the ins tag specifically within the header ad container */
+header .ad-container ins.adsbygoogle {
   display: block;
-  margin: 20px 0 0;
-  background-color: #f9f9f9;
-  overflow: hidden; /* Key to clip oversized ad content */
-  padding: 10px;
-  border-radius: 8px;
   max-width: 100%;
   box-sizing: border-box;
+  /* background-color: lightcoral; For debugging visibility */
 }
 
-/* Target the ins tag specifically within the ad container */
-.ad-container ins.adsbygoogle {
-  display: block; /* Reinforce block display */
-  max-width: 100%;
+/* Target any iframe Google might inject within the header ad container or ins tag */
+header .ad-container ins.adsbygoogle iframe,
+header .ad-container > iframe {
+  display: block;
+  max-width: 100% !important;
   box-sizing: border-box;
+  margin: 0 auto; 
 }
 
-/* Target any iframe Google might inject within the ad container or ins tag */
-.ad-container ins.adsbygoogle iframe,
-.ad-container > iframe { /* If iframe is a direct child of .ad-container */
-  display: block; /* Ensure iframe behaves like a block */
-  max-width: 100% !important; /* Attempt to override inline widths on iframe */
-  box-sizing: border-box;
-  margin: 0 auto; /* Center the iframe if it's narrower than the container */
+/* Styles for the code UI container and copy button */
+.code-ui-container {
+  position: relative;
+  margin-top: 10px;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  padding: 6px 12px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85em;
+  transition: background-color 0.2s ease;
+}
+
+.copy-code-button:hover {
+  background-color: #666;
+}
+
+.copy-code-button:active {
+  background-color: #444;
 }
 
 /* --- Custom Checkbox Styles --- */
@@ -314,13 +393,13 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
 .options-container .form-group.form-group-checkbox .checkbox-label,
 .form-group-theme-selector .theme-option .checkbox-label {
   position: relative;
-  padding-left: 28px; /* Space for the custom checkbox */
+  padding-left: 28px;
   cursor: pointer;
-  display: inline-flex; /* Align pseudo-elements correctly */
+  display: inline-flex;
   align-items: center;
-  min-height: 20px; /* Ensure clickable area */
-  line-height: 20px; /* Consistent line height */
-  text-align: left; /* Explicitly align text to the left */
+  min-height: 20px;
+  line-height: 20px;
+  text-align: left;
 }
 
 /* The custom checkbox box */
@@ -333,7 +412,7 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
-  border: 1px solid #adb5bd; /* Light grey border */
+  border: 1px solid #adb5bd;
   background-color: #fff;
   border-radius: 4px;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
@@ -348,7 +427,7 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
 /* Style when checked - box background */
 .options-container .form-group.form-group-checkbox input[type="checkbox"]:checked + .checkbox-label::before,
 .form-group-theme-selector .theme-option input[type="checkbox"]:checked + .checkbox-label::before {
-  background-color: #007aff; /* Apple blue */
+  background-color: #007aff;
   border-color: #007aff;
 }
 
@@ -363,7 +442,7 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
   height: 10px;
   border: solid white;
   border-width: 0 2px 2px 0;
-  transform: translateY(-60%) rotate(45deg) scale(0); /* Position and hide */
+  transform: translateY(-60%) rotate(45deg) scale(0);
   transition: transform 0.15s ease-in-out;
 }
 
@@ -384,25 +463,25 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
 /* --- Extra Props Section Styles --- */
 .extra-props-container {
   /* Uses .options-container for general spacing, add specifics if needed */
-  /* margin-top: 20px; */ /* If more space is needed above this section */
+  /* margin-top: 20px; */
 }
 
 .extra-props-list {
   display: flex;
-  flex-wrap: wrap; /* Allow props to wrap to the next line */
-  gap: 10px; /* Space between prop tags */
-  justify-content: flex-start; /* Align tags to the start */
-  padding-top: 10px; /* Space below the h3 heading */
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  padding-top: 10px;
 }
 
 .extra-props-list span {
-  background-color: #e9ecef; /* Light grey background */
-  color: #495057; /* Darker grey text */
+  background-color: #e9ecef;
+  color: #495057;
   padding: 8px 12px;
-  border-radius: 16px; /* Pill shape */
+  border-radius: 16px;
   font-size: 0.9em;
-  font-family: monospace; /* Use a monospace font for prop names */
-  border: 1px solid #dee2e6; /* Subtle border */
+  font-family: monospace;
+  border: 1px solid #dee2e6;
 }
 
 /* --- End Extra Props Section Styles --- */
@@ -452,48 +531,19 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
 }
 */
 
-/* AdSense Ad Container Styles */
-/* Moved to the bottom for better organization */
-.ad-container {
-  display: block;
-  margin: 20px 0 0;
-  background-color: #f9f9f9;
-  overflow: hidden; /* Key to clip oversized ad content */
-  padding: 10px;
-  border-radius: 8px;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* Target the ins tag specifically within the ad container */
-.ad-container ins.adsbygoogle {
-  display: block; /* Reinforce block display */
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* Target any iframe Google might inject within the ad container or ins tag */
-.ad-container ins.adsbygoogle iframe,
-.ad-container > iframe { /* If iframe is a direct child of .ad-container */
-  display: block; /* Ensure iframe behaves like a block */
-  max-width: 100% !important; /* Attempt to override inline widths on iframe */
-  box-sizing: border-box;
-  margin: 0 auto; /* Center the iframe if it's narrower than the container */
-}
-
 /* Styles for the code UI container and copy button */
 .code-ui-container {
-  position: relative; /* For absolute positioning of the button */
-  margin-top: 10px; /* Space above the container */
+  position: relative;
+  margin-top: 10px;
 }
 
 .copy-code-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 10; /* Ensure it's above the SyntaxHighlighter */
+  z-index: 10;
   padding: 6px 12px;
-  background-color: #555; /* Darker grey, blends with atomDark theme */
+  background-color: #555;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -508,4 +558,54 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
 
 .copy-code-button:active {
   background-color: #444;
+}
+
+/* --- AdSense Ad Container Styles (Header Specific) --- */
+/* Styles for .ad-container when it is specifically inside the header */
+header .ad-container {
+  margin: 0;
+  flex-shrink: 0;
+  flex-basis: calc(50% - 10px);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+  /* background-color: #f0f0f0; For testing visibility */
+  /* min-height: 60px; For testing visibility */
+}
+
+/* Responsive adjustments for ad container in header */
+@media (max-width: 768px) {
+  header .ad-container {
+    margin: 0;
+    width: 100%;
+    flex-basis: auto;
+    height: 90px;
+    /* min-height: 50px; For testing visibility on mobile */
+  }
+}
+
+/* Target the ins tag specifically within the header ad container */
+header .ad-container ins.adsbygoogle {
+  display: block;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* background-color: lightcoral; For debugging visibility */
+}
+
+/* Target any iframe Google might inject within the header ad container or ins tag */
+header .ad-container ins.adsbygoogle iframe,
+header .ad-container > iframe {
+  display: block;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  margin: 0 auto; 
+}
+
+/* --- End AdSense Ad Container Styles --- */
+
+footer {
+  text-align: center;
 }

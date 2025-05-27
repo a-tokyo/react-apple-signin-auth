@@ -107,9 +107,6 @@ export default MyAppleSigninButton;
   // Function to copy code to clipboard
   const handleCopyCode = async () => {
     if (!navigator.clipboard) {
-      // Fallback for older browsers or insecure contexts (http)
-      // You could implement a textarea-based copy method here if needed
-      alert('Clipboard API not available. Please copy manually.');
       return;
     }
     try {
@@ -130,8 +127,11 @@ export default MyAppleSigninButton;
   return (
     <article className="wrapper">
       <header>
-        <h1>{pkgJson.name}</h1>
-        <p>{pkgJson.description}</p>
+        <div className="header-content">
+          <h1>{pkgJson.name}</h1>
+          <p>{pkgJson.description}</p>
+        </div>
+        <GoogleAd />
       </header>
       <div className="container">
         <section>
@@ -358,7 +358,6 @@ export default MyAppleSigninButton;
               <span>render</span>
             </div>
           </div>
-          <GoogleAd />
         </section>
       </div>
       <footer>
