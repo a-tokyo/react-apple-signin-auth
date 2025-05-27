@@ -1,3 +1,10 @@
+/* Global Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 }
@@ -38,7 +45,6 @@ header .ad-container {
   flex-shrink: 0;
   flex-basis: calc(50% - 10px);
   overflow: hidden;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,7 +107,6 @@ header .ad-container {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
 /* Styles for new form layout */
@@ -177,7 +182,6 @@ header .ad-container {
   max-width: 100%;
   overflow-x: auto;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
 h1, h2, h3 {
@@ -254,7 +258,6 @@ div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
   min-width: 150px;
 }
 
@@ -277,7 +280,6 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
 header .ad-container ins.adsbygoogle {
   display: block;
   max-width: 100%;
-  box-sizing: border-box;
   /* background-color: lightcoral; For debugging visibility */
 }
 
@@ -286,7 +288,6 @@ header .ad-container ins.adsbygoogle iframe,
 header .ad-container > iframe {
   display: block;
   max-width: 100% !important;
-  box-sizing: border-box;
   margin: 0 auto; 
 }
 
@@ -466,7 +467,6 @@ header .ad-container {
   flex-shrink: 0;
   flex-basis: calc(50% - 10px);
   overflow: hidden;
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -490,7 +490,6 @@ header .ad-container {
 header .ad-container ins.adsbygoogle {
   display: block;
   max-width: 100%;
-  box-sizing: border-box;
   /* background-color: lightcoral; For debugging visibility */
 }
 
@@ -499,7 +498,6 @@ header .ad-container ins.adsbygoogle iframe,
 header .ad-container > iframe {
   display: block;
   max-width: 100% !important;
-  box-sizing: border-box;
   margin: 0 auto; 
 }
 
@@ -511,4 +509,9 @@ header .ad-container > iframe {
   align-items: center;
   gap: 20px;
   justify-content: space-between;
+}
+
+.ad-container-horizontal {
+  max-width: 100%;
+  overflow: hidden;
 }

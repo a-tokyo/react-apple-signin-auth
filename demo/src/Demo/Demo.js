@@ -8,38 +8,48 @@ import AppleSigninButton from '../../../src';
 import './Demo.css';
 
 // Google AdSense component
-const GoogleAd = () => {
+const GoogleAd = ({ format = 'auto', adSlot, className = '' }) => {
   useEffect(() => {
-    // Load AdSense script if not already loaded
-    if (!window.adsbygoogle) {
-      const script = document.createElement('script');
-      script.src =
-        'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5266987079964279';
-      script.async = true;
-      script.crossOrigin = 'anonymous';
-      document.head.appendChild(script);
-    }
-
-    // Initialize ad after script loads
-    const timer = setTimeout(() => {
+    const initializeAd = () => {
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (e) {
         console.error('AdSense error:', e);
       }
+    };
+
+    // Check if AdSense script is loaded
+    if (window.adsbygoogle) {
+      initializeAd();
+      return () => {};
+    }
+    // Wait for script to load
+    const checkAdSense = setInterval(() => {
+      if (window.adsbygoogle) {
+        clearInterval(checkAdSense);
+        initializeAd();
+      }
     }, 100);
 
-    return () => clearTimeout(timer);
+    // Cleanup interval after 10 seconds to avoid infinite checking
+    const timeout = setTimeout(() => {
+      clearInterval(checkAdSense);
+      console.warn('AdSense script failed to load within 10 seconds');
+    }, 10000);
+
+    return () => {
+      clearInterval(checkAdSense);
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
-    <div className="ad-container">
+    <div className={`ad-container ${className}`.trim()}>
       <ins
         className="adsbygoogle"
-        style={{ display: 'block' }}
         data-ad-client="ca-pub-5266987079964279"
-        data-ad-slot="8959679920"
-        data-ad-format="auto"
+        data-ad-slot={adSlot}
+        data-ad-format={format}
         data-full-width-responsive="true"
       />
     </div>
@@ -131,7 +141,7 @@ export default MyAppleSigninButton;
           <h1>{pkgJson.name}</h1>
           <p>{pkgJson.description}</p>
         </div>
-        <GoogleAd />
+        <GoogleAd adSlot="8959679920" />
       </header>
       <div className="container">
         <section>
@@ -369,6 +379,7 @@ export default MyAppleSigninButton;
           </div>
         </section>
       </div>
+      <GoogleAd adSlot="9923910253" className="ad-container-horizontal" />
       <div className="container">
         <section>
           <h2>
@@ -841,6 +852,31 @@ export const verifyAppleToken = async (idToken, user) => {
           <ul>
             <li>
               <a
+                href="https://github.com/a-tokyo/react-apple-signin-auth"
+                target="_blank"
+                rel="noopener noreferrer">
+                Apple Sign In for React, Vue, Angular, NextJS and JavaScript in
+                general
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/a-tokyo/apple-signin-auth"
+                target="_blank"
+                rel="noopener noreferrer">
+                Apple Sign In for Node JS
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.fullness.io/insights/how-to-integrate-signin-with-apple-in-react-a-stepbystep-guide"
+                target="_blank"
+                rel="noopener noreferrer">
+                Full Stack Setup Guide to Apple Sign In
+              </a>
+            </li>
+            <li>
+              <a
                 href="https://developer.apple.com/sign-in-with-apple/"
                 target="_blank"
                 rel="noopener noreferrer">
@@ -889,6 +925,7 @@ export const verifyAppleToken = async (idToken, user) => {
             </li>
           </ul>
         </section>
+        <GoogleAd adSlot="1999002989" className="ad-container-horizontal" />
       </div>
       <footer>
         Built with{' '}
