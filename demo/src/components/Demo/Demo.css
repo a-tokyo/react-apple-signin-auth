@@ -329,6 +329,5 @@ footer {
 }
 
 .ad-container {
-  /* width: 100%; */
-  height: 90px;
+  text-align: center;
 }
