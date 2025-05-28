@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import pkgJson from '../../../../package.json';
-import AppleSigninButton from '../../../../src/AppleSigninButton/AppleSigninButton.jsx';
+import AppleSigninButton from '../../../../src';
 
 import './Demo.css';
 
@@ -23,43 +23,33 @@ interface GoogleAdProps {
 
 const GoogleAd = ({ format = 'auto', adSlot, className = '' }: GoogleAdProps) => {
   useEffect(() => {
-    const initializeAd = () => {
+    const pushAd = () => {
       try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.error('AdSense error:', e);
+        const adsbygoogle = window.adsbygoogle || [];
+        adsbygoogle.push({});
+      } catch (err) {
+        console.error('Error pushing ad:', err);
       }
     };
 
-    // Check if AdSense script is loaded
+    // If the script is already loaded
     if (window.adsbygoogle) {
-      initializeAd();
-      return () => {};
-    }
-    // Wait for script to load
-    const checkAdSense = setInterval(() => {
-      if (window.adsbygoogle) {
-        clearInterval(checkAdSense);
-        initializeAd();
+      pushAd();
+    } else {
+      // Wait for script to load
+      const scriptElement = document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
+      if (scriptElement) {
+        scriptElement.addEventListener('load', pushAd);
+        return () => scriptElement.removeEventListener('load', pushAd);
       }
-    }, 100);
-
-    // Cleanup interval after 10 seconds to avoid infinite checking
-    const timeout = setTimeout(() => {
-      clearInterval(checkAdSense);
-      console.warn('AdSense script failed to load within 10 seconds');
-    }, 10000);
-
-    return () => {
-      clearInterval(checkAdSense);
-      clearTimeout(timeout);
-    };
+    }
   }, []);
 
   return (
     <div className={`ad-container ${className}`.trim()}>
       <ins
         className="adsbygoogle"
+        style={{ display: 'block' }}
         data-ad-client="ca-pub-5266987079964279"
         data-ad-slot={adSlot}
         data-ad-format={format}
@@ -154,7 +144,9 @@ export default MyAppleSigninButton;
           <h1>{pkgJson.name}</h1>
           <p>{pkgJson.description}</p>
         </div>
-        <GoogleAd adSlot="8959679920" />
+        <div className="header-side">
+          <GoogleAd adSlot="8959679920" />
+        </div>
       </header>
       <div className="container">
         <section>
@@ -186,7 +178,7 @@ export default MyAppleSigninButton;
         </section>
         <section>
           <h2>Props</h2>
-          <div className="options-container">
+          <div className="form-container">
             <h3>Auth options</h3>
             {/* Row 1: Client ID & Scope */}
             <div className="form-row">
@@ -284,8 +276,8 @@ export default MyAppleSigninButton;
               </div>
             </div>
           </div>
-          {/* UI Props Section - Restructured */}
-          <div className="options-container ui-props-container">
+          {/* UI Props Section */}
+          <div className="form-container">
             <h3>UI props</h3>
 
             {/* Row 1: buttonExtraChildren & Theme */}
@@ -307,7 +299,7 @@ export default MyAppleSigninButton;
                 />
               </div>
               <div className="form-group form-group-theme-selector">
-                <label>Theme:</label> {/* General label for the group */}
+                <label>Theme:</label>
                 <div className="theme-options">
                   <div className="theme-option">
                     <input
@@ -379,8 +371,8 @@ export default MyAppleSigninButton;
               </div>
             </div>
           </div>
-          {/* Extra Props Section - Restructured for better UI */}
-          <div className="options-container extra-props-container">
+          {/* Extra Props Section */}
+          <div className="extra-props-container">
             <h3>Extra props</h3>
             <div className="extra-props-list">
               <span>onSuccess</span>
@@ -392,7 +384,7 @@ export default MyAppleSigninButton;
           </div>
         </section>
       </div>
-      <GoogleAd adSlot="9923910253" className="ad-container-horizontal" />
+      <GoogleAd adSlot="9923910253" />
       <div className="container">
         <section>
           <h2>
@@ -939,7 +931,7 @@ export const verifyAppleToken = async (idToken, user) => {
           </ul>
         </section>
       </div>
-      <GoogleAd adSlot="1999002989" className="ad-container-horizontal" />
+      <GoogleAd adSlot="1999002989" />
       <footer>
         Built with{' '}
         <span role="img" aria-label="love">
