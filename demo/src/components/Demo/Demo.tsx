@@ -22,40 +22,6 @@ interface GoogleAdProps {
 }
 
 const GoogleAd = ({ format = 'auto', adSlot, className = '' }: GoogleAdProps) => {
-  useEffect(() => {
-    const initializeAd = () => {
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.error('AdSense error:', e);
-      }
-    };
-
-    // Check if AdSense script is loaded
-    if (window.adsbygoogle) {
-      initializeAd();
-      return () => {};
-    }
-    // Wait for script to load
-    const checkAdSense = setInterval(() => {
-      if (window.adsbygoogle) {
-        clearInterval(checkAdSense);
-        initializeAd();
-      }
-    }, 100);
-
-    // Cleanup interval after 10 seconds to avoid infinite checking
-    const timeout = setTimeout(() => {
-      clearInterval(checkAdSense);
-      console.warn('AdSense script failed to load within 10 seconds');
-    }, 10000);
-
-    return () => {
-      clearInterval(checkAdSense);
-      clearTimeout(timeout);
-    };
-  }, []);
-
   return (
     <div className={`ad-container ${className}`.trim()}>
       <ins
@@ -186,7 +152,7 @@ export default MyAppleSigninButton;
         </section>
         <section>
           <h2>Props</h2>
-          <div className="options-container">
+          <div className="form-container">
             <h3>Auth options</h3>
             {/* Row 1: Client ID & Scope */}
             <div className="form-row">
@@ -284,8 +250,8 @@ export default MyAppleSigninButton;
               </div>
             </div>
           </div>
-          {/* UI Props Section - Restructured */}
-          <div className="options-container ui-props-container">
+          {/* UI Props Section */}
+          <div className="form-container">
             <h3>UI props</h3>
 
             {/* Row 1: buttonExtraChildren & Theme */}
@@ -307,7 +273,7 @@ export default MyAppleSigninButton;
                 />
               </div>
               <div className="form-group form-group-theme-selector">
-                <label>Theme:</label> {/* General label for the group */}
+                <label>Theme:</label>
                 <div className="theme-options">
                   <div className="theme-option">
                     <input
@@ -379,8 +345,8 @@ export default MyAppleSigninButton;
               </div>
             </div>
           </div>
-          {/* Extra Props Section - Restructured for better UI */}
-          <div className="options-container extra-props-container">
+          {/* Extra Props Section */}
+          <div className="extra-props-container">
             <h3>Extra props</h3>
             <div className="extra-props-list">
               <span>onSuccess</span>

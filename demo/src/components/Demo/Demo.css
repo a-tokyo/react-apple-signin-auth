@@ -1,158 +1,105 @@
+/* CSS Variables */
+:root {
+  /* Colors */
+  --color-text-primary: #333;
+  --color-text-secondary: #555;
+  --color-text-tertiary: #777;
+  --color-border: #eee;
+  --color-background: #fff;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-primary: #007aff;
+  --color-input-border: #ccc;
+  
+  /* Spacing */
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 40px;
+  
+  /* Typography */
+  --font-size-sm: 0.9em;
+  --font-size-md: 1em;
+  --font-size-lg: 1.3em;
+  --font-size-xl: 1.8em;
+  --font-size-xxl: 2.5em;
+  
+  /* Border Radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #fff;
+    --color-text-secondary: #ccc;
+    --color-text-tertiary: #999;
+    --color-border: #444;
+    --color-background: #1a1a1a;
+    --color-shadow: rgba(0, 0, 0, 0.3);
+    --color-input-border: #555;
+  }
+}
+
+/* Base Layout */
 .wrapper {
-  padding: 20px;
+  padding: var(--spacing-lg);
   max-width: 100vw;
 }
 
-/* Header styles */
+/* Header */
 header {
   display: flex;
   align-items: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
-  gap: 20px;
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-lg);
+  gap: var(--spacing-lg);
 }
 
 .header-content {
   text-align: left;
-  flex-basis: calc(50% - 10px);
+  flex-basis: calc(50% - var(--spacing-sm));
 }
 
 .header-content h1 {
   margin-bottom: 0.2em;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xxl);
 }
 
 .header-content p {
   margin-top: 0;
-  color: #555;
-  font-size: 1em;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
 }
 
-/* Dark mode styles */
-@media (prefers-color-scheme: dark) {
-  .header-content p {
-    color: #ccc;
-  }
-  
-  h1, h2, h3 {
-    color: #fff;
-  }
-  
-  h3 {
-    color: #ddd;
-  }
-  
-  footer {
-    color: #ccc;
-    border-top: 1px solid #444;
-  }
-  
-  header {
-    border-bottom: 1px solid #444;
-  }
-  
-  .container > section {
-    border: 1px solid #444;
-    background-color: #1a1a1a;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .form-group > label {
-    color: #fff;
-  }
-  
-  .options-container .form-group > input[type="text"] {
-    background-color: #2a2a2a;
-    border: 1px solid #555;
-    color: #fff;
-  }
-  
-  .options-container .form-group > input[type="text"]:focus {
-    border-color: #007aff;
-    outline: none;
-  }
-  
-  .extra-props-list span {
-    background-color: #333;
-    color: #ccc;
-    border: 1px solid #555;
-  }
-}
-
-/* Adjust ad container for header placement - it might need less top margin now */
-header .ad-container {
-  margin: 0;
-  flex-shrink: 0;
-  flex-basis: calc(50% - 10px);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background-color: #f0f0f0; For testing visibility */
-  /* min-height: 60px; For testing visibility */
-}
-
-/* Responsive header layout */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .header-content {
-    margin-bottom: 0;
-    flex-basis: auto;
-    width: 100%;
-  }
-
-  header .ad-container {
-    margin: 0;
-    width: 100%;
-    flex-basis: auto;
-    /* min-height: 50px; For testing visibility on mobile */
-  }
-}
-
+/* Container Layout */
 .container {
   display: flex;
   flex-wrap: wrap;
-  padding: 20px 0;
-  gap: 20px;
+  padding: var(--spacing-lg) 0;
+  gap: var(--spacing-lg);
 }
 
 .container > section {
   flex: 1 1 400px;
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 2px 4px var(--color-shadow);
   min-width: 0;
+  background-color: var(--color-background);
 }
 
-.options-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 0;
-}
-
-/* Updated to target inputs within form-group */
-.options-container .form-group > input[type="text"],
-.options-container .form-group > input[type="checkbox"] {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Styles for new form layout */
+/* Form Elements */
 .form-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 15px;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
 .form-group {
@@ -164,193 +111,48 @@ header .ad-container {
 
 .form-group > label {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: var(--spacing-xs);
   display: block;
   text-align: left;
+  color: var(--color-text-primary);
 }
 
-/* Specific styling for checkbox group */
+/* Input Styles */
+.form-group input[type="text"] {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+.form-group input[type="text"]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* Custom Checkbox Styles */
 .form-group-checkbox {
   flex-direction: row;
   align-items: center;
 }
 
-/* Updated selector for higher specificity and added style overrides */
-.options-container .form-group.form-group-checkbox input[type="checkbox"] {
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.form-group-checkbox .checkbox-label {
-  font-weight: normal;
-  margin-bottom: 0;
-  vertical-align: middle;
-}
-
-/* Specific styles for UI Props section elements */
-.ui-props-container .form-group > label {
-  /* Ensures labels in UI Props are also bold if that's the general form-group > label style */
-  /* If they need to be different, this rule can be more specific */
-}
-
-.form-group-theme-selector .theme-options {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.form-group-theme-selector .theme-option {
-  display: flex;
-  align-items: center;
-}
-
-/* Ensure checkboxes in theme selector use specific checkbox styling */
-.form-group-theme-selector .theme-option input[type="checkbox"] {
-  margin-right: 5px;
-}
-
-.form-group-theme-selector .theme-option .checkbox-label {
-  font-weight: normal;
-  margin-bottom: 0;
-  vertical-align: middle;
-}
-
-.code-ui pre {
-  max-width: 100%;
-  overflow-x: auto;
-  border-radius: 4px;
-}
-
-h1, h2, h3 {
-  color: #333;
-}
-
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.5em;
-}
-
-h2 {
-  font-size: 1.8em;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.3em;
-}
-
-h3 {
-  font-size: 1.3em;
-  margin-top: 1em;
-  margin-bottom: 0.5em;
-  color: #555;
-}
-
-footer {
-  margin-top: 40px;
-  padding: 20px;
-  border-top: 1px solid #eee;
-  font-size: 0.9em;
-  color: #777;
-  text-align: center;
-}
-
-/* Styles for UI Props section to match Auth Options */
-
-/* Container for the "UI props" heading and its first group of controls (theme selection) */
-/* The heading itself is styled by the generic h3 rule */
-
-/* Row for theme selection checkboxes */
-div.container > section:nth-child(2) > div:nth-of-type(2) > div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-  flex-wrap: wrap;
-}
-
-/* Rows for other UI Props (className, noDefaultStyle, buttonExtraChildren) */
-/* These are direct div children of the second section, after the div containing "h3 UI Props" */
-div.container > section:nth-child(2) > div:nth-of-type(3),
-div.container > section:nth-child(2) > div:nth-of-type(4),
-div.container > section:nth-child(2) > div:nth-of-type(5) {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-/* Text inputs within the UI Props section */
-div.container > section:nth-child(2) > div:nth-of-type(3) > input[type="text"],
-div.container > section:nth-child(2) > div:nth-of-type(5) > input[type="text"] {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  min-width: 150px;
-}
-
-/* Checkboxes within the UI Props section */
-/* Theme selection checkboxes */
-div.container > section:nth-child(2) > div:nth-of-type(2) > div > input[type="checkbox"],
-/* noDefaultStyle checkbox */
-div.container > section:nth-child(2) > div:nth-of-type(4) > input[type="checkbox"] {
-  width: auto;
-  margin-left: 5px;
-}
-
-/* Adjust spacing for the h3 "UI props" if needed, though existing h3 style might be sufficient */
-/* For instance, to ensure consistent spacing above the first control: */
-div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
-   margin-bottom: 15px;
-}
-
-/* Styles for the code UI container and copy button */
-.code-ui-container {
-  position: relative;
-  margin-top: 10px;
-}
-
-.copy-code-button {
+/* Hide the native checkbox input while keeping it accessible */
+input[type="checkbox"] {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 10;
-  padding: 6px 12px;
-  background-color: #555;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.85em;
-  transition: background-color 0.2s ease;
-}
-
-.copy-code-button:hover {
-  background-color: #666;
-}
-
-.copy-code-button:active {
-  background-color: #444;
-}
-
-/* --- Custom Checkbox Styles --- */
-
-/* Hide the default browser checkbox */
-.options-container .form-group.form-group-checkbox input[type="checkbox"],
-.form-group-theme-selector .theme-option input[type="checkbox"] {
   opacity: 0;
-  position: absolute;
-  width: 0;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  border: none;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
-/* Style the label to make space and act as a container */
-.options-container .form-group.form-group-checkbox .checkbox-label,
-.form-group-theme-selector .theme-option .checkbox-label {
+.checkbox-label {
   position: relative;
   padding-left: 28px;
   cursor: pointer;
@@ -359,11 +161,10 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
   min-height: 20px;
   line-height: 20px;
   text-align: left;
+  color: var(--color-text-primary);
 }
 
-/* The custom checkbox box */
-.options-container .form-group.form-group-checkbox .checkbox-label::before,
-.form-group-theme-selector .theme-option .checkbox-label::before {
+.checkbox-label::before {
   content: "";
   position: absolute;
   left: 0;
@@ -371,28 +172,13 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
-  border: 1px solid #adb5bd;
-  background-color: #fff;
-  border-radius: 4px;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 1px solid var(--color-input-border);
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-sm);
+  transition: all 0.15s ease-in-out;
 }
 
-/* Style on hover */
-.options-container .form-group.form-group-checkbox .checkbox-label:hover::before,
-.form-group-theme-selector .theme-option .checkbox-label:hover::before {
-  border-color: #007aff;
-}
-
-/* Style when checked - box background */
-.options-container .form-group.form-group-checkbox input[type="checkbox"]:checked + .checkbox-label::before,
-.form-group-theme-selector .theme-option input[type="checkbox"]:checked + .checkbox-label::before {
-  background-color: #007aff;
-  border-color: #007aff;
-}
-
-/* The checkmark icon (hidden by default) */
-.options-container .form-group.form-group-checkbox .checkbox-label::after,
-.form-group-theme-selector .theme-option .checkbox-label::after {
+.checkbox-label::after {
   content: "";
   position: absolute;
   left: 6px;
@@ -405,64 +191,56 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
   transition: transform 0.15s ease-in-out;
 }
 
-/* Show the checkmark when checked */
-.options-container .form-group.form-group-checkbox input[type="checkbox"]:checked + .checkbox-label::after,
-.form-group-theme-selector .theme-option input[type="checkbox"]:checked + .checkbox-label::after {
+input[type="checkbox"]:checked + .checkbox-label::before {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+input[type="checkbox"]:checked + .checkbox-label::after {
   transform: translateY(-60%) rotate(45deg) scale(1);
 }
 
-/* Focus style for accessibility */
-.options-container .form-group.form-group-checkbox input[type="checkbox"]:focus + .checkbox-label::before,
-.form-group-theme-selector .theme-option input[type="checkbox"]:focus + .checkbox-label::before {
+input[type="checkbox"]:focus + .checkbox-label::before {
   box-shadow: 0 0 0 0.2rem rgba(0, 122, 255, 0.25);
 }
 
-/* --- End Custom Checkbox Styles --- */
-
-/* --- Extra Props Section Styles --- */
-.extra-props-container {
-  /* Uses .options-container for general spacing, add specifics if needed */
-  /* margin-top: 20px; */
-}
-
-.extra-props-list {
+/* Theme Selector */
+.form-group-theme-selector .theme-options {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: flex-start;
-  padding-top: 10px;
+  gap: var(--spacing-md);
+  align-items: center;
+  margin-top: var(--spacing-xs);
 }
 
-.extra-props-list span {
-  background-color: #e9ecef;
-  color: #495057;
-  padding: 8px 12px;
-  border-radius: 16px;
-  font-size: 0.9em;
-  font-family: monospace;
-  border: 1px solid #dee2e6;
+.form-group-theme-selector .theme-option {
+  display: flex;
+  align-items: center;
 }
 
-/* --- End Extra Props Section Styles --- */
-
-/* Styles for the code UI container and copy button */
+/* Code UI */
 .code-ui-container {
   position: relative;
-  margin-top: 10px;
+  margin-top: var(--spacing-sm);
+}
+
+.code-ui pre {
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: var(--border-radius-sm);
 }
 
 .copy-code-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
   z-index: 10;
   padding: 6px 12px;
   background-color: #555;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  font-size: 0.85em;
+  font-size: var(--font-size-sm);
   transition: background-color 0.2s ease;
 }
 
@@ -474,38 +252,63 @@ div.container > section:nth-child(2) > div:nth-of-type(2) > h3 {
   background-color: #444;
 }
 
-/* --- AdSense Ad Container Styles (Header Specific) --- */
-/* Styles for .ad-container when it is specifically inside the header */
-header .ad-container {
+/* Typography */
+h1, h2, h3 {
+  color: var(--color-text-primary);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  color: var(--color-text-secondary);
+}
+
+/* Extra Props */
+.extra-props-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+}
+
+.extra-props-list span {
+  background-color: var(--color-background);
+  color: var(--color-text-secondary);
+  padding: 8px 12px;
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-sm);
+  font-family: monospace;
+  border: 1px solid var(--color-border);
+}
+
+/* Footer */
+footer {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+/* Ad Container */
+.ad-container {
   margin: 0;
   flex-shrink: 0;
-  flex-basis: calc(50% - 10px);
+  flex-basis: calc(50% - var(--spacing-sm));
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #f0f0f0; For testing visibility */
-  /* min-height: 60px; For testing visibility */
-}
-
-/* Responsive adjustments for ad container in header */
-@media (max-width: 768px) {
-  header .ad-container {
-    margin: 0;
-    width: 100%;
-    flex-basis: auto;
-    /* min-height: 50px; For testing visibility on mobile */
-  }
-}
-
-/* --- End AdSense Ad Container Styles --- */
-
-/* Styles for the row containing UI buttons (Apple Signin, Sponsor) */
-.ui-buttons-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  justify-content: space-between;
 }
 
 .ad-container-horizontal {
@@ -513,64 +316,31 @@ header .ad-container {
   overflow: hidden;
 }
 
-/* === DARK MODE OVERRIDES === */
-/* These styles must be at the end to override all previous styles */
-@media (prefers-color-scheme: dark) {
-  /* Text colors */
-  .header-content p {
-    color: #ccc !important;
-  }
-  
-  h1, h2, h3 {
-    color: #fff !important;
-  }
-  
-  h3 {
-    color: #ddd !important;
-  }
-  
-  footer {
-    color: #ccc !important;
-    border-top: 1px solid #444 !important;
-  }
-  
-  /* Borders and backgrounds */
+/* Responsive Design */
+@media (max-width: 768px) {
   header {
-    border-bottom: 1px solid #444 !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
   }
-  
-  .container > section {
-    border: 1px solid #444 !important;
-    background-color: #1a1a1a !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+
+  .header-content {
+    margin-bottom: 0;
+    flex-basis: auto;
+    width: 100%;
   }
-  
-  /* Form elements */
-  .form-group > label {
-    color: #fff !important;
+
+  header .ad-container {
+    margin: 0;
+    width: 100%;
+    flex-basis: auto;
   }
-  
-  .options-container .form-group > input[type="text"] {
-    background-color: #2a2a2a !important;
-    border: 1px solid #555 !important;
-    color: #fff !important;
-  }
-  
-  .options-container .form-group > input[type="text"]:focus {
-    border-color: #007aff !important;
-    outline: none !important;
-  }
-  
-  /* Extra props tags */
-  .extra-props-list span {
-    background-color: #333 !important;
-    color: #ccc !important;
-    border: 1px solid #555 !important;
-  }
-  
-  /* Checkbox labels */
-  .form-group-checkbox .checkbox-label,
-  .form-group-theme-selector .theme-option .checkbox-label {
-    color: #fff !important;
-  }
+}
+
+/* UI Buttons Row */
+.ui-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
 }
