@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import pkgJson from '../../../../package.json';
-import AppleSigninButton from '../../../../src/AppleSigninButton/AppleSigninButton.jsx';
+// @ts-ignore
+import AppleSigninButton from '../../../../src/AppleSigninButton/AppleSigninButton';
 
 import './Demo.css';
 
@@ -22,10 +23,34 @@ interface GoogleAdProps {
 }
 
 const GoogleAd = ({ format = 'auto', adSlot, className = '' }: GoogleAdProps) => {
+  useEffect(() => {
+    const pushAd = () => {
+      try {
+        const adsbygoogle = window.adsbygoogle || [];
+        adsbygoogle.push({});
+      } catch (err) {
+        console.error('Error pushing ad:', err);
+      }
+    };
+
+    // If the script is already loaded
+    if (window.adsbygoogle) {
+      pushAd();
+    } else {
+      // Wait for script to load
+      const scriptElement = document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]');
+      if (scriptElement) {
+        scriptElement.addEventListener('load', pushAd);
+        return () => scriptElement.removeEventListener('load', pushAd);
+      }
+    }
+  }, []);
+
   return (
     <div className={`ad-container ${className}`.trim()}>
       <ins
         className="adsbygoogle"
+        style={{ display: 'block' }}
         data-ad-client="ca-pub-5266987079964279"
         data-ad-slot={adSlot}
         data-ad-format={format}
@@ -120,7 +145,9 @@ export default MyAppleSigninButton;
           <h1>{pkgJson.name}</h1>
           <p>{pkgJson.description}</p>
         </div>
-        <GoogleAd adSlot="8959679920" />
+        <div className="header-side">
+          <GoogleAd adSlot="8959679920" />
+        </div>
       </header>
       <div className="container">
         <section>
@@ -358,7 +385,7 @@ export default MyAppleSigninButton;
           </div>
         </section>
       </div>
-      <GoogleAd adSlot="9923910253" className="ad-container-horizontal" />
+      <GoogleAd adSlot="9923910253" />
       <div className="container">
         <section>
           <h2>
@@ -905,7 +932,7 @@ export const verifyAppleToken = async (idToken, user) => {
           </ul>
         </section>
       </div>
-      <GoogleAd adSlot="1999002989" className="ad-container-horizontal" />
+      <GoogleAd adSlot="1999002989" />
       <footer>
         Built with{' '}
         <span role="img" aria-label="love">
