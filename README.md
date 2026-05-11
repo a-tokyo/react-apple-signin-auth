@@ -173,6 +173,23 @@ Another library exists for server/backend support for Apple signin [apple-signin
 - [Apple Signin for Node JS](https://github.com/A-Tokyo/apple-signin-auth)
 - [Apple Signin for React Native](https://github.com/invertase/react-native-apple-authentication)
 
+## Troubleshooting
+
+### Popup doesn't close / `onSuccess` never fires (`usePopup: true`)
+When `usePopup: true`, Apple's JS SDK only resolves the signin promise if `authOptions.redirectURI`'s origin exactly matches `window.location.origin`. If they differ, the popup completes the auth flow but the parent window never receives the `web_message` response, so the popup stays open and neither `onSuccess` nor `onError` fires.
+
+- Make sure the page that calls `signIn` is served from the same origin as `redirectURI` (scheme + host + port).
+- If you need a backend to receive the response (`form_post` flow), use `usePopup: false` the popup mode posts back to the opener window, not to your server.
+
+Reference: [Apple Developer Forums thread 130666](https://developer.apple.com/forums/thread/130666).
+
+### Blank page after redirect / `appleauth/jslog` errors
+A blank page after the Apple redirect (often with a failed `appleauth/jslog` network request) means Apple's servers rejected the request because the page calling `signIn` isn't whitelisted on your Apple Service ID.
+
+- In the Apple Developer Console, open your Service ID and make sure the page's origin is listed under **Return URLs**.
+- `localhost` is rejected by Apple. For local development use a deployed staging URL or a hostname that resolves to your machine (eg: `127.0.0.1.nip.io`).
+- The Service ID's `clientId`, `redirectURI`, and the origin serving the signin button must all be configured consistently.
+
 ## Contributing
 Pull requests are highly appreciated! For major changes, please open an issue first to discuss what you would like to change.
 
