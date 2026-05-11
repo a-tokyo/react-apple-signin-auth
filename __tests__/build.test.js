@@ -43,6 +43,17 @@ describeIfBuilt('build output (run `yarn transpile` first)', () => {
       expect(typeof cjsModule.appleAuthHelpers.signIn).toBe('function');
       expect(typeof cjsModule.useScript).toBe('function');
     });
+
+    it('deep import "react-apple-signin-auth/dist/appleAuthHelpers" still resolves (README @unstable path)', () => {
+      // eslint-disable-next-line global-require, import/no-dynamic-require
+      const deepHelpers = require(path.join(
+        distDir,
+        'appleAuthHelpers',
+        'index.js',
+      ));
+      expect(typeof deepHelpers.default).toBe('object');
+      expect(typeof deepHelpers.default.signIn).toBe('function');
+    });
   });
 
   describe('ESM — dist/esm/index.js', () => {
@@ -92,15 +103,19 @@ describeIfBuilt('build output (run `yarn transpile` first)', () => {
 
   describe('package.json wiring', () => {
     it('all main/module/types fields and exports conditions point to existing files', () => {
-      const conditions = packageJson.exports['.'];
+      const rootConditions = packageJson.exports['.'];
+      const helpersConditions = packageJson.exports['./dist/appleAuthHelpers'];
       const targets = {
         main: packageJson.main,
         module: packageJson.module,
         types: packageJson.types,
-        'exports."."→types': conditions.types,
-        'exports."."→import': conditions.import,
-        'exports."."→require': conditions.require,
-        'exports."."→default': conditions.default,
+        'exports."."→types': rootConditions.types,
+        'exports."."→import': rootConditions.import,
+        'exports."."→require': rootConditions.require,
+        'exports."."→default': rootConditions.default,
+        'exports."./dist/appleAuthHelpers"→import': helpersConditions.import,
+        'exports."./dist/appleAuthHelpers"→require': helpersConditions.require,
+        'exports."./dist/appleAuthHelpers"→default': helpersConditions.default,
       };
       const missing = Object.entries(targets)
         .filter(([, file]) => !fs.existsSync(path.join(root, file)))

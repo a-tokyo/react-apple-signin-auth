@@ -22,6 +22,11 @@
       "require": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./dist/appleAuthHelpers": {
+      "import": "./dist/esm/appleAuthHelpers/index.js",
+      "require": "./dist/appleAuthHelpers/index.js",
+      "default": "./dist/appleAuthHelpers/index.js"
+    },
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },
@@ -120,6 +125,7 @@
     "es6",
     "vue",
     "vue-apple",
+    "vite",
     "flow",
     "types"
   ],
