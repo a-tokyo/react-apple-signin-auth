@@ -1,6 +1,6 @@
 {
   "name": "react-apple-signin-auth",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "description": " Apple signin for React using the official Apple JS SDK",
   "author": {
     "name": "Ahmed Tarek",
@@ -12,7 +12,24 @@
     "url": "https://github.com/a-tokyo/react-apple-signin-auth.git"
   },
   "main": "dist/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./dist/appleAuthHelpers": {
+      "import": "./dist/esm/appleAuthHelpers/index.js",
+      "require": "./dist/appleAuthHelpers/index.js",
+      "default": "./dist/appleAuthHelpers/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
   "files": [
     "dist/"
   ],
@@ -22,12 +39,12 @@
   },
   "scripts": {
     "start": "cd demo && npm run dev",
-    "transpile": "rm -rf dist && tsc && babel src -d dist --copy-files && rm -rf dist/**/__snapshots__ && find ./dist -name '*.test.js*' -type f -delete ",
-    "prepublishOnly": "npm run transpile",
+    "transpile": "rm -rf dist && tsc && babel src -d dist --copy-files && BABEL_ENV=esm babel src -d dist/esm --copy-files && node -e \"require('fs').writeFileSync('dist/esm/package.json', JSON.stringify({type:'module'}))\" && rm -rf dist/**/__snapshots__ dist/esm/**/__snapshots__ && find ./dist -name '*.test.js*' -type f -delete && node scripts/fix-esm-extensions.js",
+    "prepublishOnly": "npm run transpile && jest __tests__/build.test.js",
     "build": "cd demo && npm run build && cd ..",
     "deploy": "gh-pages -d demo/dist",
     "publish-demo": "npm run build && npm run deploy",
-    "postinstall": "cd demo && npm install && cd ..",
+    "postinstall": "test ! -d demo || (cd demo && npm install)",
     "test": "jest"
   },
   "peerDependencies": {
@@ -108,6 +125,7 @@
     "es6",
     "vue",
     "vue-apple",
+    "vite",
     "flow",
     "types"
   ],

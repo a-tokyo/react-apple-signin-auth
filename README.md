@@ -38,6 +38,8 @@ OR
 yarn add react-apple-signin-auth
 ```
 
+> Ships dual CJS + ESM builds with proper `exports`, so `import AppleSignin from 'react-apple-signin-auth'` works out-of-the-box in Vite, Next.js, webpack, Rollup, and native Node ESM. TypeScript types are bundled.
+
 ## Usage
 [Checkout the demo for a quick start!](https://react-apple-signin-auth.ahmedtokyo.com)
 ```js
@@ -175,6 +177,9 @@ Another library exists for server/backend support for Apple signin [apple-signin
 - [Supabase Docs: Build a Social Auth App with Expo React Native](https://supabase.com/docs/guides/auth/quickstarts/with-expo-react-native-social-auth)
 
 ## Troubleshooting
+
+### Vite 8 "Element type is invalid... but got: object"
+Vite 8 tightened its CJS interop and no longer auto-unwraps `module.exports.default` when you `import` a CJS package. Resolved in **v1.2.0+** by shipping a native ESM build advertised through the `exports` field. Upgrade to 1.2.0 or newer; the workaround `legacy.inconsistentCjsInterop: true` in `vite.config.ts` is no longer needed.
 
 ### Popup doesn't close / `onSuccess` never fires (`usePopup: true`)
 When `usePopup: true`, Apple's JS SDK only resolves the signin promise if `authOptions.redirectURI`'s origin exactly matches `window.location.origin`. If they differ, the popup completes the auth flow but the parent window never receives the `web_message` response, so the popup stays open and neither `onSuccess` nor `onError` fires.
