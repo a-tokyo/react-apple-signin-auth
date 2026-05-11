@@ -172,6 +172,7 @@ Another library exists for server/backend support for Apple signin [apple-signin
 ### Related Projects
 - [Apple Signin for Node JS](https://github.com/A-Tokyo/apple-signin-auth)
 - [Apple Signin for React Native](https://github.com/invertase/react-native-apple-authentication)
+- [Supabase Docs: Build a Social Auth App with Expo React Native](https://supabase.com/docs/guides/auth/quickstarts/with-expo-react-native-social-auth)
 
 ## Contributing
 Pull requests are highly appreciated! For major changes, please open an issue first to discuss what you would like to change.
