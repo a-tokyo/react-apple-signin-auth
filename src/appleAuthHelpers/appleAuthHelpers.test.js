@@ -137,6 +137,56 @@ describe('appleAuthHelpers', () => {
     expect(response).toBeNull();
   });
 
+  it('should NOT call onError when signIn rejects and usePopup is false (redirect mode)', async () => {
+    window.AppleID = {
+      auth: {
+        init: AppleIDAuthInitFn,
+        signIn: () => Promise.reject(new Error('spurious redirect-mode error')),
+      },
+    };
+    const input = {
+      authOptions: { ..._authOptions, usePopup: false },
+      onError: jest.fn(),
+      onSuccess: jest.fn(),
+    };
+    const response = await appleAuthHelpers.signIn(input);
+    expect(response).toBeNull();
+    expect(input.onError).not.toHaveBeenCalled();
+    expect(input.onSuccess).not.toHaveBeenCalled();
+    expect(window.AppleID.auth.init).toHaveBeenCalled();
+  });
+
+  it('should NOT call onSuccess when signIn resolves and usePopup is false (redirect mode)', async () => {
+    const input = {
+      authOptions: { ..._authOptions, usePopup: false },
+      onError: jest.fn(),
+      onSuccess: jest.fn(),
+    };
+    const response = await appleAuthHelpers.signIn(input);
+    expect(response).toBeNull();
+    expect(input.onSuccess).not.toHaveBeenCalled();
+    expect(input.onError).not.toHaveBeenCalled();
+  });
+
+  it('should still call onError when init throws and usePopup is false', async () => {
+    window.AppleID = {
+      auth: {
+        init: () => {
+          throw new Error('init error');
+        },
+        signIn: AppleIDAuthSignInFn,
+      },
+    };
+    const input = {
+      authOptions: { ..._authOptions, usePopup: false },
+      onError: jest.fn(),
+    };
+    const response = await appleAuthHelpers.signIn(input);
+    expect(response).toBeNull();
+    expect(input.onError.mock.calls[0][0]).toEqual(expect.any(Error));
+    expect(input.onError.mock.calls[0][0].message).toEqual('init error');
+  });
+
   it('should call onSuccess upon success', async () => {
     const input = {
       authOptions: _authOptions,

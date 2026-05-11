@@ -28,8 +28,21 @@ const signIn = ({
       /** Init apple auth */
       window.AppleID.auth.init(authOptions);
       /** Signin to appleID */
-      return window.AppleID.auth
-        .signIn()
+      const signInPromise = window.AppleID.auth.signIn();
+      /**
+       * In redirect mode (!usePopup) the Apple SDK navigates the page away.
+       * The returned promise can reject spuriously during/after navigation,
+       * which would flash onError before the redirect happens. Skip handlers
+       * in that case onSuccess/onError are popup-only by design.
+       */
+      if (!authOptions.usePopup) {
+        /** Swallow rejection to avoid unhandled promise warnings during navigation. */
+        if (signInPromise && typeof signInPromise.catch === 'function') {
+          signInPromise.catch(() => {});
+        }
+        return null;
+      }
+      return signInPromise
         .then((response) => {
           /** This is only called in case usePopup is true */
           if (onSuccess) {
