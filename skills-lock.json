@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "production-grade": {
+      "source": "a-tokyo/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/production-grade/SKILL.md",
+      "computedHash": "eb6a74434939d868b461646995500bd64a54949aa8f32b42ca705f93d162da0f"
+    }
+  }
+}
