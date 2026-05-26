@@ -1,6 +1,6 @@
 {
   "name": "react-apple-signin-auth",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": " Apple signin for React using the official Apple JS SDK",
   "author": {
     "name": "Ahmed Tarek",
@@ -38,12 +38,12 @@
     "url": "https://github.com/a-tokyo/react-apple-signin-auth/issues"
   },
   "scripts": {
+    "prestart": "node -e \"const fs=require('fs');const{execSync}=require('child_process');if(fs.existsSync('demo')){execSync('npm install',{cwd:'demo',stdio:'inherit'})}\"",
     "start": "cd demo && npm run dev",
     "transpile": "rm -rf dist && tsc && babel src -d dist --copy-files && BABEL_ENV=esm babel src -d dist/esm --copy-files && node -e \"require('fs').writeFileSync('dist/esm/package.json', JSON.stringify({type:'module'}))\" && rm -rf dist/**/__snapshots__ dist/esm/**/__snapshots__ && find ./dist -name '*.test.js*' -type f -delete && node scripts/fix-esm-extensions.js",
     "build": "cd demo && npm run build && cd ..",
     "deploy": "gh-pages -d demo/dist",
     "publish-demo": "npm run build && npm run deploy",
-    "postinstall": "test ! -d demo || (cd demo && npm install)",
     "test": "jest"
   },
   "peerDependencies": {
