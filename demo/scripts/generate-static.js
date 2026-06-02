@@ -55,6 +55,9 @@ async function generateStaticSite() {
     process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
   const launchOptions = {
     headless: true,
+    ...(process.env.PUPPETEER_EXECUTABLE_PATH && {
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+    }),
     ...(isCI && {
       args: [
         '--no-sandbox',
