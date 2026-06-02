@@ -32,6 +32,7 @@ jobs:
       - name: Install
         run: yarn install --frozen-lockfile
       - name: Setup Chrome
+        id: setup-chrome
         uses: browser-actions/setup-chrome@v1
       - name: Transpile library
         run: yarn transpile
@@ -39,6 +40,8 @@ jobs:
         run: yarn test --ci --bail
       - name: Build demo
         run: NODE_ENV=production yarn build
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
@@ -72,11 +75,14 @@ jobs:
       - name: Install
         run: yarn install --frozen-lockfile
       - name: Setup Chrome
+        id: setup-chrome
         uses: browser-actions/setup-chrome@v1
       - name: Transpile library
         run: yarn transpile
       - name: Build demo
         run: NODE_ENV=production yarn build
+        env:
+          PUPPETEER_EXECUTABLE_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
       - name: Setup env vars
         id: ownEnvVars
         run: |
