@@ -2,6 +2,10 @@
 
 Six diffs. Each shows the most common LLM failure mode and the production-grade correction. The agent uses these as calibration — if the generated code looks like the "before," rewrite.
 
+## Contents
+
+1 · check-then-act → atomic upsert · 2 · narrating comments + try-catch → clean · 3 · happy-path → edge-aware · 4 · premature abstraction → concrete-first · 5 · unstructured errors → typed domain errors · 6 · missing infra → scaffolded
+
 ---
 
 ## 1. Check-then-act → atomic upsert

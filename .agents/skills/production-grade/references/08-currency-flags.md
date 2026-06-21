@@ -4,6 +4,10 @@ The catalogue M3 reaches for. The body of `SKILL.md` holds the *operating shape*
 
 M3 turns V33 (always latest docs) reflexively onto the operator's own canon. **No directive is canon just because it lives in this skill.** Every directive that names a substrate (a framework version, a library, a deployment platform, a language feature, a pattern with date-stamped guidance) gets currency-checked before being quoted.
 
+## Contents
+
+§A · lane-canonical authorities · §B · standing currency flags · §C · how a new flag lands · §D · currency-checking in practice
+
 ---
 
 ## §A · Lane-canonical authorities

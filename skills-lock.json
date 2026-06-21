@@ -5,7 +5,13 @@
       "source": "a-tokyo/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/production-grade/SKILL.md",
-      "computedHash": "eb6a74434939d868b461646995500bd64a54949aa8f32b42ca705f93d162da0f"
+      "computedHash": "086a0163377cd281608338684b59a88ed2acc48b3e55ed03a8bd0d89bcbde80a"
+    },
+    "tribunal": {
+      "source": "a-tokyo/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/tribunal/SKILL.md",
+      "computedHash": "ac8989a5441dc6c936540063dcaa29917b9033d3bfc1d72365c0f28126eda35b"
     }
   }
 }

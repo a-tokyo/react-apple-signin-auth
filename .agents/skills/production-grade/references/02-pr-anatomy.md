@@ -2,6 +2,10 @@
 
 The shape below is the **target**. Local PR template wins where it exists — the agent **extends** it, never replaces it. Append missing sections under their canonical headers.
 
+## Contents
+
+PR body fixed order (Intent · Scope boundary · Approach · Alternatives · RCA · Security impact · Performance impact · Tests · Rollback · Open questions · Made-with) · Commits · Branches · Review behaviour
+
 ---
 
 ## PR body — fixed order

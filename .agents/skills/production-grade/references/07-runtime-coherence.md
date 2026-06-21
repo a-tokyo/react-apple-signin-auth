@@ -4,6 +4,10 @@ The catalogue R15 reaches for. The body of `SKILL.md` holds the *principle* (no 
 
 Every infra primitive — cache, KV, rate-limiter, in-memory store, dataloader, websocket, file-system write, long-lived connection, background timer, in-process queue, cron — must be coherent with the runtime model it executes in. **Before adding any primitive, ask: *does this runtime sustain shared state across invocations?***
 
+## Contents
+
+§0 · choosing the runtime class · §A · the four runtime classes · §B · the smell test · §C · named anti-patterns · §D · routing in the R1 plan
+
 ---
 
 ## §0 · Choosing the runtime class

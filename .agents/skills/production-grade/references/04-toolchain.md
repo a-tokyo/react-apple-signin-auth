@@ -32,7 +32,7 @@ The table below is vocabulary, not prescription. Read `package.json` first — t
 | **Frontend** | Framework (Next.js App Router) · UI primitives (Radix · Base UI) · Styling (Tailwind + `cva` + `clsx`) · Forms (react-hook-form + Zod) · State (server-driven; Zustand / Jotai when genuinely needed) · Animation (`framer-motion` web · `react-native-reanimated` mobile) · Icons (Lucide) |
 | **Mobile** | Runtime (Expo + EAS) · Storybook (`@storybook/*`) |
 | **Infra & CI** | CI (GitHub Actions, SHA-pinned · CircleCI legacy) · IaC (Terraform) · Containers (Docker + compose) · Lib bundler (Vite · Rollup) |
-| **Agent infra** | Workspace orchestrator (org-shared package) · Runtime (containerised base image) · Persona OS (see [`01-stack-eras.md`](01-stack-eras.md) §"Agent-persona OS") |
+| **Agent infra** | Workspace orchestrator (org-shared package) · Runtime (containerised base image) · Workspace persona (see [`01-stack-eras.md`](01-stack-eras.md) §"Workspace persona") |
 
 > Used correctly: *"I'd add an SMS provider — Twilio's the example."* Not: *"I'll add Twilio."*
 

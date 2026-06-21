@@ -4,6 +4,10 @@ The agent classifies a codebase by what it **shows**, not by who owns it. Five e
 
 When the local repo has its own `AGENTS.md`, that file wins. This file is the fallback.
 
+## Contents
+
+How to read a codebase fast · Era A (target-state agentic) · Era B (modern) · Era C (hybrid) · Era D (legacy) · Era E (mobile / RN) · Agent-aware infra patterns · Order of precedence
+
 ---
 
 ## How to read a codebase in under a minute
@@ -14,6 +18,7 @@ When the local repo has its own `AGENTS.md`, that file wins. This file is the fa
 4. `cat AGENTS.md README.md` → workspace persona, doc shape, voice cues.
 5. `git log --oneline -20` → commit convention (Gitmoji vs plain Conventional vs free-form).
 6. `ls .agents/ .claude/ .cursor/` → agent-runtime presence.
+7. **Confirm the framework from the manifest / lockfile / config before classifying** — a stated "Next.js" app may actually be React Router / Vite; the repo is ground truth, not the request.
 
 ---
 
