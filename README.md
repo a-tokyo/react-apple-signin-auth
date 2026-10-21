@@ -61,7 +61,7 @@ const MyAppleSigninButton = () => (
       /** Nonce */
       nonce: 'nonce',
       /** Uses popup auth instead of redirection */
-      usePopup: ${authOptions.usePopup},
+      usePopup: true,
     }} // REQUIRED
     /** General props */
     uiType="dark"
@@ -79,7 +79,7 @@ const MyAppleSigninButton = () => (
     /** Skips loading the apple script if true */
     skipScript={false} // default = undefined
     /** Apple image props */
-    iconProp={{ style: { marginTop: '10px' } }} // default = undefined
+    iconProps={{ style: { marginTop: '10px' } }} // default = undefined
     /** render function - called with all props - can be used to fully customize the UI by rendering your own component  */
     render={(props) => <button {...props}>My Custom Button</button>}
   />
