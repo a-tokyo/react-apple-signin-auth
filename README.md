@@ -46,7 +46,7 @@ yarn add react-apple-signin-auth
 import AppleSignin from 'react-apple-signin-auth';
 
 /** Apple Signin button */
-const MyAppleSigninButton = () => (
+const MyAppleSigninButton = ({ usePopup = true }) => (
   <AppleSignin
     /** Auth options passed to AppleID.auth.init() */
     authOptions={{
@@ -61,7 +61,7 @@ const MyAppleSigninButton = () => (
       /** Nonce */
       nonce: 'nonce',
       /** Uses popup auth instead of redirection */
-      usePopup: true,
+      usePopup,
     }} // REQUIRED
     /** General props */
     uiType="dark"
